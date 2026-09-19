@@ -4,7 +4,7 @@
   "private": true,
   "description": "Write once. Use anywhere. — cross-browser template paster. Dev-tooling manifest only; the extension itself ships zero runtime dependencies.",
   "license": "GPL-3.0-or-later",
-  "homepage": "https://github.com/yfthcn/yazit",
+  "homepage": "https://github.com/yfthcn/YAZIT",
   "scripts": {
     "test": "node --test",
     "typecheck": "tsc -p jsconfig.json",

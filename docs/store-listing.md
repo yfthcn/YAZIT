@@ -73,7 +73,7 @@ WORKS EVERYWHERE
 Plain <input>/<textarea> and rich editors (CKEditor, Quill, ProseMirror,
 TinyMCE, Gmail). Bilingual interface: English and Türkçe (auto-detected).
 
-Source & issues: https://github.com/yfthcn/yazit
+Source & issues: https://github.com/yfthcn/YAZIT
 ```
 
 ### Description (TR)
@@ -119,7 +119,7 @@ HER YERDE ÇALIŞIR
 Düz <input>/<textarea> ve zengin editörler (CKEditor, Quill, ProseMirror,
 TinyMCE, Gmail). İki dilli arayüz: İngilizce ve Türkçe (otomatik algılanır).
 
-Kaynak ve sorunlar: https://github.com/yfthcn/yazit
+Kaynak ve sorunlar: https://github.com/yfthcn/YAZIT
 ```
 
 ### Notes to reviewer (private — pastes into the "Notes for reviewers" box)
@@ -141,7 +141,7 @@ Permission justification:
 
 Firefox manifest declares data_collection_permissions.required = ["none"].
 The add-on is open source (GPLv3) and reproducibly built from build.py:
-https://github.com/yfthcn/yazit
+https://github.com/yfthcn/YAZIT
 ```
 
 ### Categories / tags
@@ -164,7 +164,7 @@ permission justification. Chrome-specific notes:
   **Privacy practices** tab: declare that no user data is collected or
   transmitted, and that permissions are used solely for local pasting (mirror
   the reviewer note above). Privacy-policy URL:
-  `https://yfthcn.github.io/yazit/privacy.html`.
+  `https://yfthcn.github.io/YAZIT/privacy.html`.
 
 ---
 

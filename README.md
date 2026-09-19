@@ -19,7 +19,7 @@ No account, no server, no telemetry.
 [![Browsers](https://img.shields.io/badge/browsers-Chrome%20%7C%20Edge%20%7C%20Firefox-success)](#installation)
 [![Runtime dependencies](https://img.shields.io/badge/runtime%20deps-0-brightgreen)](#privacy)
 
-[Website](https://yfthcn.github.io/yazit/) ·
+[Website](https://yfthcn.github.io/YAZIT/) ·
 [User guide](docs/USAGE.md) ·
 [Install](#installation) ·
 [Usage](#usage) ·
@@ -78,7 +78,11 @@ One source tree, two packages — pick the one for your browser.
 
 ### Chrome · Edge · Brave · Opera · Vivaldi
 
-1. Download `yazit-chrome.zip` from [Releases](https://github.com/yfthcn/yazit/releases).
+**From the Chrome Web Store:** [install YAZIT](https://chromewebstore.google.com/detail/ildhflhgdbocbgongnjgbpikkdpllmma) — updates automatically.
+
+**Unpacked (for testing a specific build):**
+
+1. Download `yazit-chrome.zip` from [Releases](https://github.com/yfthcn/YAZIT/releases).
 2. Extract it to a **permanent** folder (the browser loads it from there every start).
 3. Open `chrome://extensions` (or `edge://extensions`).
 4. Turn on **Developer mode**.
@@ -90,11 +94,11 @@ Requires Chrome / Edge **105+**.
 ### Firefox
 
 **From AMO:** install from
-[addons.mozilla.org](https://addons.mozilla.org/firefox/addon/yazit/).
+[addons.mozilla.org](https://addons.mozilla.org/firefox/addon/typeless/).
 
 **Temporary install (for testing):**
 
-1. Download `yazit-firefox.zip` from [Releases](https://github.com/yfthcn/yazit/releases) and extract it.
+1. Download `yazit-firefox.zip` from [Releases](https://github.com/yfthcn/YAZIT/releases) and extract it.
 2. Open `about:debugging#/runtime/this-firefox`.
 3. **Load Temporary Add-on** → select `manifest.json`.
 
@@ -221,7 +225,7 @@ pasting into browser-internal and extension-store pages.
 Requires **Node 24+** (Active LTS) and **Python 3** for the packaging script.
 
 ```bash
-git clone https://github.com/yfthcn/yazit.git
+git clone https://github.com/yfthcn/YAZIT.git
 cd yazit
 
 # Dev tooling only. The extension ships ZERO runtime dependencies;
@@ -358,7 +362,7 @@ Hesap yok, sunucu yok, telemetri yok.
 | **Otomatik yedek** | Her yıkıcı işlemden önce alınan, 5 anlık görüntülük yerel güvenlik ağı |
 | **İçe / dışa aktarma** | JSON giriş-çıkış, ayrıca **Text Blaze** ve **Magical** dışa aktarımlarından tek tıkla içe aktarma |
 | **Sır farkındalığı** | Kimlik bilgisi gibi adlandırılmış alanların (`şifre`, `parola`, `kart_no`, `api_key`, `iban`…) değeri asla hatırlanmaz |
-| **Karanlık kip** | Sayfa içi form dâhil her yerde işletim sistemi temasını izler |
+| **Açık / koyu tema** | Sistem (varsayılan), Açık veya Koyu — ayarlar sayfasından seçilir; sayfa içi form dâhil her yerde geçerli |
 | **İki dilli** | İngilizce ve Türkçe; otomatik algılanır veya elle seçilir |
 
 `<textarea>`, `<input>` ve TinyMCE, CKEditor, Quill, ProseMirror, Gmail gibi
@@ -369,7 +373,11 @@ Korece giriş yöntemlerinin önüne geçmez.
 
 **Chrome · Edge · Brave · Opera · Vivaldi** (105+)
 
-1. [Releases](https://github.com/yfthcn/yazit/releases) sayfasından `yazit-chrome.zip` dosyasını indir.
+**Chrome Web Store'dan:** [YAZIT'i kur](https://chromewebstore.google.com/detail/ildhflhgdbocbgongnjgbpikkdpllmma) — otomatik güncellenir.
+
+**Paketsiz (belirli bir sürümü denemek için):**
+
+1. [Releases](https://github.com/yfthcn/YAZIT/releases) sayfasından `yazit-chrome.zip` dosyasını indir.
 2. **Kalıcı** bir klasöre çıkar — tarayıcı her açılışta oradan yükler.
 3. `chrome://extensions` adresini aç, **Geliştirici modu**'nu etkinleştir.
 4. **Paketlenmemiş öğe yükle** → çıkardığın klasörü seç.
@@ -377,7 +385,7 @@ Korece giriş yöntemlerinin önüne geçmez.
 
 **Firefox** (140+, Android'de 142+)
 
-[addons.mozilla.org](https://addons.mozilla.org/firefox/addon/yazit/) üzerinden
+[addons.mozilla.org](https://addons.mozilla.org/firefox/addon/typeless/) üzerinden
 kur. Geçici kurulum için: `yazit-firefox.zip` indir ve çıkar,
 `about:debugging#/runtime/this-firefox` adresinde **Geçici Eklenti Yükle** → `manifest.json`.
 Geçici eklentiler Firefox yeniden başlayınca kaldırılır.
