@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YAZIT — Write once. Use anywhere.</title>
+  <meta name="description" content="Paste ready-made text templates into any web form. 100% local — no account, no server, no tracking. Free & open source." />
+  <link rel="icon" href="icons/icon32.png" sizes="32x32" />
+  <link rel="icon" href="icons/icon48.png" sizes="48x48" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Language toggle -->
+  <div class="lang-switch">
+    <button data-lang="en" class="active">EN</button>
+    <button data-lang="tr">TR</button>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero">
+    <img class="logo" src="icons/icon128.png" width="84" height="84" alt="YAZIT" />
+    <h1>YAZIT</h1>
+    <p class="tagline" data-en="Write once. Use anywhere." data-tr="Bir kez yaz. Her yerde kullan.">Write once. Use anywhere.</p>
+    <p class="sub" data-en="Paste ready-made templates into any web form — and nothing ever leaves your browser."
+                  data-tr="Hazır şablonları herhangi bir web formuna yapıştır — ve hiçbir şey tarayıcından çıkmaz.">
+      Paste ready-made templates into any web form — and nothing ever leaves your browser.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://addons.mozilla.org/firefox/addon/yazit/">
+        <span data-en="Get it for Firefox" data-tr="Firefox için indir">Get it for Firefox</span></a>
+      <a class="btn" href="https://github.com/yfthcn/yazit/releases">
+        <span data-en="Chrome / Edge (unpacked)" data-tr="Chrome / Edge (paketsiz)">Chrome / Edge (unpacked)</span></a>
+    </div>
+    <div class="badges">
+      <span>v2.7.0</span><span>GPLv3</span><span>Manifest V3</span><span>Zero dependencies</span>
+      <span data-en="No server" data-tr="Sunucu yok">No server</span>
+    </div>
+    <figure class="shot hero-shot">
+      <img src="assets/hero.png" alt="YAZIT in action" loading="lazy" onerror="this.closest('figure').classList.add('missing')" />
+      <figcaption data-en="Drop a screenshot at docs/assets/hero.png" data-tr="Bir ekran görüntüsünü docs/assets/hero.png'e koy">Drop a screenshot at docs/assets/hero.png</figcaption>
+    </figure>
+  </header>
+
+  <!-- Trust band -->
+  <section class="band">
+    <strong data-en="No server. No account. No tracking." data-tr="Sunucu yok. Hesap yok. Takip yok.">No server. No account. No tracking.</strong>
+    <span data-en="Your templates live in your browser. Verify it yourself — search the source for fetch( and you won't find a single external URL."
+          data-tr="Şablonların tarayıcında durur. Kendin doğrula — kaynakta fetch( ara, tek bir dış URL bulamazsın.">
+      Your templates live in your browser. Verify it yourself — search the source for fetch( and you won't find a single external URL.</span>
+  </section>
+
+  <!-- Feature grid -->
+  <section class="features">
+    <h2 data-en="What you get" data-tr="Neler var">What you get</h2>
+    <div class="grid">
+      <div class="card"><h3 data-en="Four ways to paste" data-tr="Dört yapıştırma yolu">Four ways to paste</h3>
+        <p data-en="Keyboard shortcuts, popup menu, /slash commands, and a fuzzy slash autocomplete."
+           data-tr="Klavye kısayolu, açılır menü, /slash komutları ve bulanık slash otomatik tamamlama.">Keyboard shortcuts, popup menu, /slash commands, and a fuzzy slash autocomplete.</p></div>
+      <div class="card"><h3 data-en="Dynamic variables" data-tr="Dinamik değişkenler">Dynamic variables</h3>
+        <p data-en="{{date}}, {{date+3d}}, {{time}}, {{cursor}} — resolved locally, no permissions."
+           data-tr="{{date}}, {{date+3d}}, {{time}}, {{cursor}} — yerelde çözülür, izin gerekmez.">{{date}}, {{date+3d}}, {{time}}, {{cursor}} — resolved locally, no permissions.</p></div>
+      <div class="card"><h3 data-en="Smart placeholders" data-tr="Akıllı yer tutucular">Smart placeholders</h3>
+        <p data-en="Text, dropdown and date fields with defaults — built visually, no syntax to memorise."
+           data-tr="Varsayılanlı metin, açılır liste ve tarih alanları — görsel kurulur, söz dizimi ezberleme yok.">Text, dropdown and date fields with defaults — built visually, no syntax to memorise.</p></div>
+      <div class="card"><h3 data-en="Rich text" data-tr="Zengin metin">Rich text</h3>
+        <p data-en="Bold, links and lists paste formatted into rich editors and degrade to clean plain text."
+           data-tr="Kalın, bağlantı ve listeler zengin editörlere biçimli yapışır, temiz düz metne döner.">Bold, links and lists paste formatted into rich editors and degrade to clean plain text.</p></div>
+      <div class="card"><h3 data-en="Local backups" data-tr="Yerel yedekler">Local backups</h3>
+        <p data-en="Automatic rolling snapshots with one-click restore. Import/export as JSON."
+           data-tr="Otomatik dönüşümlü yedekler, tek tıkla geri yükleme. JSON içe/dışa aktarma.">Automatic rolling snapshots with one-click restore. Import/export as JSON.</p></div>
+      <div class="card"><h3 data-en="Switch in one click" data-tr="Tek tıkla geç">Switch in one click</h3>
+        <p data-en="Import your snippets straight from Text Blaze or Magical."
+           data-tr="Snippet'lerini Text Blaze veya Magical'dan doğrudan içe aktar.">Import your snippets straight from Text Blaze or Magical.</p></div>
+    </div>
+  </section>
+
+  <!-- Screenshot: options -->
+  <section class="screens">
+    <h2 data-en="Manage everything in one place" data-tr="Her şeyi tek yerden yönet">Manage everything in one place</h2>
+    <figure class="shot">
+      <img src="assets/shot-options.png" alt="YAZIT options page" loading="lazy" onerror="this.closest('figure').classList.add('missing')" />
+      <figcaption data-en="Drop a screenshot at docs/assets/shot-options.png" data-tr="Bir ekran görüntüsünü docs/assets/shot-options.png'e koy">Drop a screenshot at docs/assets/shot-options.png</figcaption>
+    </figure>
+  </section>
+
+  <!-- How it works -->
+  <section class="steps">
+    <h2 data-en="How it works" data-tr="Nasıl çalışır">How it works</h2>
+    <ol>
+      <li><b>1.</b> <span data-en="Save a template (with {{placeholders}} if you like)." data-tr="Bir şablon kaydet (istersen {{yer_tutucu}} ile).">Save a template (with {{placeholders}} if you like).</span></li>
+      <li><b>2.</b> <span data-en="Focus any text field on any site." data-tr="Herhangi bir sitedeki bir metin alanına tıkla.">Focus any text field on any site.</span></li>
+      <li><b>3.</b> <span data-en="Type /shortcut, press a hotkey, or pick from the popup." data-tr="/kısayol yaz, kısayol tuşuna bas ya da menüden seç.">Type /shortcut, press a hotkey, or pick from the popup.</span></li>
+      <li><b>4.</b> <span data-en="Fill in the blanks — done." data-tr="Boşlukları doldur — bitti.">Fill in the blanks — done.</span></li>
+    </ol>
+  </section>
+
+  <!-- Comparison -->
+  <section class="compare">
+    <h2 data-en="How it compares" data-tr="Karşılaştırma">How it compares</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th></th><th>YAZIT</th><th>Text Blaze</th><th>Magical</th><th>TextExpander</th><th>Briskine</th>
+      </tr></thead>
+      <tbody>
+        <tr><td data-en="Free (unlimited)" data-tr="Ücretsiz (sınırsız)">Free (unlimited)</td><td class="y">✓</td><td class="n">limited</td><td class="n">✗</td><td class="n">✗</td><td class="n">30</td></tr>
+        <tr><td data-en="No server / 100% local" data-tr="Sunucusuz / %100 yerel">No server / 100% local</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+        <tr><td data-en="Open source" data-tr="Açık kaynak">Open source</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+        <tr><td data-en="Firefox + Chrome" data-tr="Firefox + Chrome">Firefox + Chrome</td><td class="y">✓</td><td class="n">~</td><td class="n">Chrome</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td data-en="Dynamic variables" data-tr="Dinamik değişkenler">Dynamic variables</td><td class="y">✓</td><td class="n">paid</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td data-en="No account required" data-tr="Hesap gerekmez">No account required</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="fineprint" data-en="Comparison based on publicly listed plans, June 2026. Competitor features may require a paid tier."
+                          data-tr="Karşılaştırma, Haziran 2026 kamuya açık planlarına dayanır. Rakip özellikleri ücretli katman gerektirebilir.">
+      Comparison based on publicly listed plans, June 2026. Competitor features may require a paid tier.</p>
+  </section>
+
+  <footer>
+    <a href="https://github.com/yfthcn/yazit">GitHub</a> ·
+    <a href="privacy.html" data-en="Privacy" data-tr="Gizlilik">Privacy</a> ·
+    <a href="https://kaktusdev.net">kaktusdev.net</a> ·
+    <span>GPLv3 · © 2026 yfthcn</span>
+  </footer>
+
+  <script src="lang.js"></script>
+</body>
+</html>

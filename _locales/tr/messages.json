@@ -1,0 +1,696 @@
+{
+  "appName": {
+    "message": "YAZIT"
+  },
+  "appDescription": {
+    "message": "Bir kez yaz, her yerde kullan. ServiceNow ve tüm web formları için hazır template'ler."
+  },
+  "popupTitle": {
+    "message": "YAZIT — Şablon Yapıştırıcı (Alt+Shift+Y)"
+  },
+  "tagline": {
+    "message": "Bir kez yaz. Her yerde kullan."
+  },
+  "madeBy": {
+    "message": "Yapımcı"
+  },
+  "viewOnGithub": {
+    "message": "GitHub'da görüntüle"
+  },
+  "cmdOpenPopup": {
+    "message": "Template menüsünü aç"
+  },
+  "cmdPaste1": {
+    "message": "1. template'i yapıştır"
+  },
+  "cmdPaste2": {
+    "message": "2. template'i yapıştır"
+  },
+  "cmdPaste3": {
+    "message": "3. template'i yapıştır"
+  },
+  "popupHeading": {
+    "message": "Template Seç"
+  },
+  "popupEmpty": {
+    "message": "Henüz template yok. Ayarlardan ekleyin."
+  },
+  "popupEditLink": {
+    "message": "⚙ Template'leri Düzenle"
+  },
+  "popupShortcutHint": {
+    "message": "Kısayollar: $KEYS$",
+    "placeholders": {
+      "keys": {
+        "content": "$1"
+      }
+    }
+  },
+  "popupNoAccess": {
+    "message": "Sayfaya erişilemedi. Sayfayı yenileyip tekrar deneyin."
+  },
+  "formHeading": {
+    "message": "Template bilgilerini doldurun"
+  },
+  "formPaste": {
+    "message": "Yapıştır"
+  },
+  "formCancel": {
+    "message": "İptal"
+  },
+  "needFocus": {
+    "message": "Lütfen önce yapıştırmak istediğiniz alana tıklayın."
+  },
+  "optionsTitle": {
+    "message": "YAZIT — Ayarlar"
+  },
+  "hintsTitle": {
+    "message": "İpuçları:"
+  },
+  "hintPlaceholder": {
+    "message": "Template içinde {{değişken_adı}} yazarsanız, yapıştırırken form açılır ve doldurmanızı ister."
+  },
+  "hintShortcut": {
+    "message": "İlk üç template $KEYS$ kısayoluna bağlıdır (tarayıcılar 4 eklenti kısayolu tanır; biri popup'ı açar). Diğerleri için popup'ı veya /slash komutlarını kullan — kısayollar tarayıcının eklenti kısayolları ayarından değiştirilebilir.",
+    "placeholders": {
+      "keys": {
+        "content": "$1"
+      }
+    }
+  },
+  "hintSlash": {
+    "message": "Shortcut alanına yazdığınız kelimeyi ticket ekranında /kelime şeklinde yazıp boşluk bırakırsanız otomatik genişler."
+  },
+  "btnAdd": {
+    "message": "+ Yeni Template Ekle"
+  },
+  "btnExportAll": {
+    "message": "Tümünü Dışa Aktar (JSON)"
+  },
+  "btnExportOne": {
+    "message": "Dışa Aktar"
+  },
+  "btnExportSelected": {
+    "message": "Seçilenleri Dışa Aktar"
+  },
+  "btnImport": {
+    "message": "İçe Aktar (JSON)"
+  },
+  "btnDeselectAll": {
+    "message": "Seçimi Kaldır"
+  },
+  "selectedCount": {
+    "message": "$COUNT$ seçili",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "exportSingleTooltip": {
+    "message": "Sadece bu template'i dışa aktar"
+  },
+  "importMerge": {
+    "message": "Mevcutlara ekle"
+  },
+  "importReplace": {
+    "message": "Mevcut tüm template'leri değiştir"
+  },
+  "importPreview": {
+    "message": "Dosyada $COUNT$ template bulundu",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "importCancel": {
+    "message": "İptal"
+  },
+  "importSuccess": {
+    "message": "$COUNT$ template başarıyla içe aktarıldı ✓",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "statusSaved": {
+    "message": "Kaydedildi ✓"
+  },
+  "labelName": {
+    "message": "Template Adı"
+  },
+  "labelShortcut": {
+    "message": "Slash Komutu (isteğe bağlı) — örn: \"sifre\" → /sifre"
+  },
+  "labelBody": {
+    "message": "İçerik — değişkenler için {{değişken_adı}} kullanın"
+  },
+  "btnUp": {
+    "message": "↑ Yukarı"
+  },
+  "btnDown": {
+    "message": "↓ Aşağı"
+  },
+  "btnDelete": {
+    "message": "Sil"
+  },
+  "confirmDelete": {
+    "message": "Bu template'i silmek istediğinize emin misiniz?"
+  },
+  "indexLabel": {
+    "message": "$INDEX$. template",
+    "placeholders": {
+      "index": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "shortcutLabel": {
+    "message": " — Klavye kısayolu: $KEY$",
+    "placeholders": {
+      "key": {
+        "content": "$1"
+      }
+    }
+  },
+  "importError": {
+    "message": "İçe aktarma hatası: $MSG$",
+    "placeholders": {
+      "msg": {
+        "content": "$1"
+      }
+    }
+  },
+  "importInvalid": {
+    "message": "Geçersiz format"
+  },
+  "defaultTpl1Name": {
+    "message": "Şifre Sıfırlama"
+  },
+  "defaultTpl1Body": {
+    "message": "Merhaba {{musteri_adi}},\n\nŞifreniz başarıyla sıfırlanmıştır. Geçici şifrenizle giriş yaptıktan sonra kendi şifrenizi belirleyebilirsiniz.\n\nTicket No: {{ticket_no}}\n\nİyi çalışmalar."
+  },
+  "defaultTpl2Name": {
+    "message": "Bilgi İsteği"
+  },
+  "defaultTpl2Body": {
+    "message": "Merhaba {{musteri_adi}},\n\nTalebinizle ilgili daha fazla bilgiye ihtiyacımız var. Lütfen aşağıdaki bilgileri iletir misiniz?\n\n- {{bilgi_1}}\n- {{bilgi_2}}\n\nTeşekkürler."
+  },
+  "defaultTpl3Name": {
+    "message": "Ticket Kapanış"
+  },
+  "defaultTpl3Body": {
+    "message": "Merhaba {{musteri_adi}},\n\nTalebiniz çözüme kavuşturulmuştur. Eğer başka bir sorunuz olursa yeni ticket açabilirsiniz.\n\nİyi günler dileriz."
+  },
+  "statusError": {
+    "message": "Kayıt başarısız"
+  },
+  "popupSystemPage": {
+    "message": "YAZIT bu sayfada çalışamaz (tarayıcı sistem sayfası).\n\nNormal bir web sayfasında deneyin (ör. google.com).",
+    "description": "Shown in popup when user clicks paste on a chrome:// or about: page"
+  },
+  "backupEmpty": {
+    "message": "Henüz yedek yok."
+  },
+  "backupRestore": {
+    "message": "Geri yükle"
+  },
+  "backupRestored": {
+    "message": "Yedek geri yüklendi"
+  },
+  "backupsTitle": {
+    "message": "Yerel yedekler"
+  },
+  "btnBackups": {
+    "message": "⟲ Yedekler"
+  },
+  "btnExportClip": {
+    "message": "JSON kopyala"
+  },
+  "clipCopied": {
+    "message": "Panoya kopyalandı"
+  },
+  "confirmRestore": {
+    "message": "Bu yedek geri yüklensin mi? Mevcut şablonların önce anlık yedeği alınır."
+  },
+  "conflictKeepboth": {
+    "message": "İkisini de tut"
+  },
+  "conflictOverwrite": {
+    "message": "Mevcutların üzerine yaz"
+  },
+  "conflictSkip": {
+    "message": "Yinelenenleri atla"
+  },
+  "dragHint": {
+    "message": "Sıralamak için sürükle"
+  },
+  "labelTags": {
+    "message": "Arama anahtar kelimeleri"
+  },
+  "searchNoResults": {
+    "message": "Aramanızla eşleşen şablon yok."
+  },
+  "searchPlaceholder": {
+    "message": "Şablonlarda ara…"
+  },
+  "tagsPlaceholder": {
+    "message": "virgülle, ayrılmış, kelimeler"
+  },
+  "varInsert": {
+    "message": "Değişken ekle ▾"
+  },
+  "varNeedField": {
+    "message": "Önce bir şablon gövdesine tıkla."
+  },
+  "varCursor": {
+    "message": "Yapıştırmadan sonra imleç konumu"
+  },
+  "varDate": {
+    "message": "Bugünün tarihi"
+  },
+  "varDateOffset": {
+    "message": "N gün/hafta/ay kaydırılmış tarih"
+  },
+  "varTime": {
+    "message": "Şimdiki saat"
+  },
+  "varDatetime": {
+    "message": "Tarih ve saat"
+  },
+  "varField": {
+    "message": "Doldurulacak alan"
+  },
+  "backupCount": {
+    "message": "$COUNT$ şablon",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "capReached": {
+    "message": "Şablon sınırına ulaşıldı ($MAX$).",
+    "placeholders": {
+      "max": {
+        "content": "$1"
+      }
+    }
+  },
+  "conflictText": {
+    "message": "$COUNT$ kısayol zaten mevcut. Yinelenenlerin nasıl ele alınacağını seç:",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importSourceDetected": {
+    "message": "$SOURCE$ biçimi algılandı — otomatik dönüştürüldü.",
+    "placeholders": {
+      "source": {
+        "content": "$1"
+      }
+    }
+  },
+  "importSummary": {
+    "message": "($REJECTED$ atlandı, $TRUNCATED$ kısaltıldı)",
+    "placeholders": {
+      "rejected": {
+        "content": "$1"
+      },
+      "truncated": {
+        "content": "$2"
+      }
+    }
+  },
+  "importTooLarge": {
+    "message": "Dosya çok büyük (en fazla $MAX$ MB).",
+    "placeholders": {
+      "max": {
+        "content": "$1"
+      }
+    }
+  },
+  "formatPlain": {
+    "message": "Düz"
+  },
+  "formatRich": {
+    "message": "Zengin metin"
+  },
+  "tbBold": {
+    "message": "Kalın"
+  },
+  "tbItalic": {
+    "message": "İtalik"
+  },
+  "tbUnderline": {
+    "message": "Altı çizili"
+  },
+  "tbLink": {
+    "message": "Bağlantı ekle"
+  },
+  "tbList": {
+    "message": "Madde listesi"
+  },
+  "fieldsToggle": {
+    "message": "Alanlar"
+  },
+  "fieldsEmpty": {
+    "message": "Alanları buradan yapılandırmak için gövdeye {{yer_tutucu}} ekle."
+  },
+  "fbLabel": {
+    "message": "Etiket"
+  },
+  "fbDefault": {
+    "message": "Varsayılan"
+  },
+  "fbOptions": {
+    "message": "Seçenekler (virgülle)"
+  },
+  "fbRemember": {
+    "message": "Hatırla"
+  },
+  "fbAdd": {
+    "message": "+ Alan ekle"
+  },
+  "fbAddPrompt": {
+    "message": "Yeni alan adı:"
+  },
+  "typeText": {
+    "message": "Metin"
+  },
+  "typeMultiline": {
+    "message": "Çok satır"
+  },
+  "typeDropdown": {
+    "message": "Açılır liste"
+  },
+  "typeDate": {
+    "message": "Tarih"
+  },
+  "confirmToPlain": {
+    "message": "Düz metne çevrilsin mi? Biçimlendirme kaybolacak."
+  },
+  "metacharWarn": {
+    "message": "Bir alan değerinden | { } , karakterleri kaldırıldı."
+  },
+  "hintIf": {
+    "message": "Koşullu metin: şablonda bir kısmı seçip “{ if } Koşul”a tıklayın — yalnızca bir kutu işaretliyse ya da bir alan belirli bir değere sahipse yapıştırılır."
+  },
+  "formRequired": {
+    "message": "Bu alan zorunlu."
+  },
+  "formOther": {
+    "message": "Diğer…"
+  },
+  "formClipboard": {
+    "message": "Panodan yapıştır"
+  },
+  "formClipboardFail": {
+    "message": "Pano erişimi reddedildi — elle yapıştırın."
+  },
+  "typeCheckbox": {
+    "message": "Onay kutusu"
+  },
+  "fbRequired": {
+    "message": "Zorunlu"
+  },
+  "fbDateDefault": {
+    "message": "today, +3d, -1w veya yyyy-MM-dd"
+  },
+  "tbStrike": {
+    "message": "Üstü çizili"
+  },
+  "tbH2": {
+    "message": "Başlık 2"
+  },
+  "tbH3": {
+    "message": "Başlık 3"
+  },
+  "tbOList": {
+    "message": "Numaralı liste"
+  },
+  "tbCode": {
+    "message": "Satır içi kod"
+  },
+  "tbPre": {
+    "message": "Kod bloğu"
+  },
+  "tbTable": {
+    "message": "Tablo ekle"
+  },
+  "linkUrl": {
+    "message": "URL"
+  },
+  "linkText": {
+    "message": "Bağlantı metni"
+  },
+  "linkRemove": {
+    "message": "Bağlantıyı kaldır"
+  },
+  "tableRows": {
+    "message": "Satır"
+  },
+  "tableCols": {
+    "message": "Sütun"
+  },
+  "tableHeader": {
+    "message": "Başlık satırı"
+  },
+  "popoverApply": {
+    "message": "Uygula"
+  },
+  "varDateFormat": {
+    "message": "Bugün, biçimli (dd.MM.yyyy)"
+  },
+  "varIf": {
+    "message": "Koşullu blok"
+  },
+  "newTplName": {
+    "message": "Yeni template $NUM$",
+    "placeholders": {
+      "num": {
+        "content": "$1"
+      }
+    }
+  },
+  "hintsClose": {
+    "message": "İpuçlarını gizle"
+  },
+  "emptyState": {
+    "message": "Henüz template yok. İlkini oluştur — popup'ta, klavye kısayoluyla ve /slash komutu olarak hemen hazır olur."
+  },
+  "dlgOk": {
+    "message": "Tamam"
+  },
+  "foldersHeading": {
+    "message": "Klasörler"
+  },
+  "folderAll": {
+    "message": "Tümü"
+  },
+  "folderFavorites": {
+    "message": "Favoriler"
+  },
+  "folderNone": {
+    "message": "Kategorisiz"
+  },
+  "folderNew": {
+    "message": "Yeni klasör"
+  },
+  "folderNewOption": {
+    "message": "Yeni klasör…"
+  },
+  "folderPrompt": {
+    "message": "Klasör adı"
+  },
+  "folderRenamePrompt": {
+    "message": "“$NAME$” klasörünü yeniden adlandır",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "folderRename": {
+    "message": "Klasörü yeniden adlandır"
+  },
+  "folderDelete": {
+    "message": "Klasörü sil"
+  },
+  "folderDeleteConfirm": {
+    "message": "“$NAME$” klasörü silinsin mi? İçindeki $COUNT$ şablon Kategorisiz'e taşınır, hiçbiri silinmez.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "count": {
+        "content": "$2"
+      }
+    }
+  },
+  "folderExists": {
+    "message": "Bu adla bir klasör zaten var."
+  },
+  "folderCap": {
+    "message": "Klasör sınırına ulaşıldı ($MAX$).",
+    "placeholders": {
+      "max": {
+        "content": "$1"
+      }
+    }
+  },
+  "folderEmpty": {
+    "message": "Burada henüz şablon yok."
+  },
+  "labelFolder": {
+    "message": "Klasör"
+  },
+  "favoriteAdd": {
+    "message": "Favorilere ekle"
+  },
+  "favoriteRemove": {
+    "message": "Favorilerden çıkar"
+  },
+  "folderMoved": {
+    "message": "$NAME$ klasörüne taşındı",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "themeLabel": {
+    "message": "Tema"
+  },
+  "themeAuto": {
+    "message": "Sistem"
+  },
+  "themeLight": {
+    "message": "Açık"
+  },
+  "themeDark": {
+    "message": "Koyu"
+  },
+  "dataMenu": {
+    "message": "İçe / Dışa aktar"
+  },
+  "settingsMenu": {
+    "message": "Ayarlar"
+  },
+  "expandAll": {
+    "message": "Tümünü aç"
+  },
+  "collapseAll": {
+    "message": "Tümünü kapat"
+  },
+  "expand": {
+    "message": "Ayrıntıları göster"
+  },
+  "collapse": {
+    "message": "Ayrıntıları gizle"
+  },
+  "condToggle": {
+    "message": "Koşul"
+  },
+  "condTooltip": {
+    "message": "Metnin bir kısmı yalnızca bazı durumlarda görünsün"
+  },
+  "condIntro": {
+    "message": "Seçili metin yok; işaretler imlecin olduğu yere eklenir, koşullu metni aralarına yazın. İpucu: önce metni seçerseniz seçim sarmalanır."
+  },
+  "condIntroSel": {
+    "message": "Seçili metin yalnızca aşağıdaki koşul sağlandığında yapıştırılır."
+  },
+  "condField": {
+    "message": "Alan"
+  },
+  "condFieldPh": {
+    "message": "ör. acil"
+  },
+  "condWhen": {
+    "message": "Ne zaman"
+  },
+  "condModeTruthy": {
+    "message": "işaretliyse / doluysa"
+  },
+  "condModeEquals": {
+    "message": "şuna eşitse"
+  },
+  "condValuePh": {
+    "message": "değer"
+  },
+  "condElse": {
+    "message": "Aksi durum için de metin ekle"
+  },
+  "condSelectedText": {
+    "message": "seçili metin"
+  },
+  "condNeedName": {
+    "message": "Sonucu görmek için bir alan adı girin."
+  },
+  "condInsert": {
+    "message": "Ekle"
+  },
+  "condTooLong": {
+    "message": "Bu ekleme şablonu uzunluk sınırının üzerine çıkarır."
+  },
+  "condWarn_unclosed": {
+    "message": "“$NAME$” koşulu {{/if}} ile kapatılmamış — işaretler düz metin olarak yapıştırılır.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "condWarn_nested": {
+    "message": "“$NAME$” koşulu başka bir koşulun içinde başlıyor. Koşullar iç içe olamaz — yenisine başlamadan öncekini {{/if}} ile kapatın.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "condWarn_strayElse": {
+    "message": "{{else}} bir koşulun dışında duruyor ve düz metin olarak yapıştırılır."
+  },
+  "condWarn_strayClose": {
+    "message": "{{/if}} için eşleşen bir {{#if}} yok; düz metin olarak yapıştırılır."
+  },
+  "condWarn_doubleElse": {
+    "message": "“$NAME$” koşulunda birden fazla {{else}} var — yalnızca bir tane olabilir.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "condWarn_noName": {
+    "message": "Bir koşulda alan adı eksik: {{#if ad}} şeklinde yazın."
+  },
+  "fbRememberHint": {
+    "message": "Hatırlanan değerler bu cihazda şifrelenmeden saklanır. Parola veya kart numarası için açmayın."
+  },
+  "forgetRemembered": {
+    "message": "Hatırlananları unut"
+  },
+  "forgetRememberedDone": {
+    "message": "Hatırlanan değerler silindi."
+  },
+  "forgetAllRemembered": {
+    "message": "Tüm hatırlanan değerleri temizle"
+  },
+  "forgetAllConfirm": {
+    "message": "Her şablonun hatırlanan değerleri silinsin mi? Şablonların kendisine dokunulmaz."
+  },
+  "condBrokenSkipped": {
+    "message": "Bu şablondaki bazı {{#if}} işaretçileri eşleşmiyor ve olduğu gibi yapıştırıldı."
+  }
+}

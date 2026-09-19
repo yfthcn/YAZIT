@@ -1,0 +1,699 @@
+{
+  "appName": {
+    "message": "YAZIT",
+    "description": "Extension name"
+  },
+  "appDescription": {
+    "message": "Write once. Use anywhere. Ready-made templates for ServiceNow and any web form.",
+    "description": "Extension description"
+  },
+  "popupTitle": {
+    "message": "YAZIT — Template Paster (Alt+Shift+Y)",
+    "description": "Tooltip shown on extension icon"
+  },
+  "tagline": {
+    "message": "Write once. Use anywhere."
+  },
+  "madeBy": {
+    "message": "Made by"
+  },
+  "viewOnGithub": {
+    "message": "View on GitHub"
+  },
+  "cmdOpenPopup": {
+    "message": "Open template menu"
+  },
+  "cmdPaste1": {
+    "message": "Paste 1st template"
+  },
+  "cmdPaste2": {
+    "message": "Paste 2nd template"
+  },
+  "cmdPaste3": {
+    "message": "Paste 3rd template"
+  },
+  "popupHeading": {
+    "message": "Select a Template"
+  },
+  "popupEmpty": {
+    "message": "No templates yet. Add some from settings."
+  },
+  "popupEditLink": {
+    "message": "⚙ Edit Templates"
+  },
+  "popupShortcutHint": {
+    "message": "Shortcuts: $KEYS$",
+    "placeholders": {
+      "keys": {
+        "content": "$1"
+      }
+    }
+  },
+  "popupNoAccess": {
+    "message": "Cannot access this page. Refresh and try again."
+  },
+  "formHeading": {
+    "message": "Fill in template fields"
+  },
+  "formPaste": {
+    "message": "Paste"
+  },
+  "formCancel": {
+    "message": "Cancel"
+  },
+  "needFocus": {
+    "message": "Please click the field you want to paste into first."
+  },
+  "optionsTitle": {
+    "message": "YAZIT — Settings"
+  },
+  "hintsTitle": {
+    "message": "Tips:"
+  },
+  "hintPlaceholder": {
+    "message": "Use {{variable_name}} in templates — a form will open to fill them when pasting."
+  },
+  "hintShortcut": {
+    "message": "The first three templates are bound to $KEYS$ (browsers allow 4 extension shortcuts; one opens the popup). Use the popup or /slash commands for the rest — remap under your browser's extension shortcuts.",
+    "placeholders": {
+      "keys": {
+        "content": "$1"
+      }
+    }
+  },
+  "hintSlash": {
+    "message": "Type /shortcut + space in any ticket field to auto-expand the template."
+  },
+  "btnAdd": {
+    "message": "+ Add New Template"
+  },
+  "btnExportAll": {
+    "message": "Export All (JSON)"
+  },
+  "btnExportOne": {
+    "message": "Export"
+  },
+  "btnExportSelected": {
+    "message": "Export Selected"
+  },
+  "btnImport": {
+    "message": "Import (JSON)"
+  },
+  "btnDeselectAll": {
+    "message": "Deselect All"
+  },
+  "selectedCount": {
+    "message": "$COUNT$ selected",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "exportSingleTooltip": {
+    "message": "Export this template only"
+  },
+  "importMerge": {
+    "message": "Append to existing templates"
+  },
+  "importReplace": {
+    "message": "Replace all existing templates"
+  },
+  "importPreview": {
+    "message": "$COUNT$ template(s) found in file",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "importCancel": {
+    "message": "Cancel"
+  },
+  "importSuccess": {
+    "message": "$COUNT$ template(s) imported successfully ✓",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "statusSaved": {
+    "message": "Saved ✓"
+  },
+  "labelName": {
+    "message": "Template Name"
+  },
+  "labelShortcut": {
+    "message": "Slash Command (optional) — e.g., \"pass\" → /pass"
+  },
+  "labelBody": {
+    "message": "Content — use {{variable_name}} for variables"
+  },
+  "btnUp": {
+    "message": "↑ Move Up"
+  },
+  "btnDown": {
+    "message": "↓ Move Down"
+  },
+  "btnDelete": {
+    "message": "Delete"
+  },
+  "confirmDelete": {
+    "message": "Are you sure you want to delete this template?"
+  },
+  "indexLabel": {
+    "message": "Template #$INDEX$",
+    "placeholders": {
+      "index": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "shortcutLabel": {
+    "message": " — Keyboard shortcut: $KEY$",
+    "placeholders": {
+      "key": {
+        "content": "$1"
+      }
+    }
+  },
+  "importError": {
+    "message": "Import error: $MSG$",
+    "placeholders": {
+      "msg": {
+        "content": "$1"
+      }
+    }
+  },
+  "importInvalid": {
+    "message": "Invalid format"
+  },
+  "defaultTpl1Name": {
+    "message": "Password Reset"
+  },
+  "defaultTpl1Body": {
+    "message": "Hi {{customer_name}},\n\nYour password has been reset. You can log in with the temporary password and set your own afterwards.\n\nTicket No: {{ticket_no}}\n\nBest regards."
+  },
+  "defaultTpl2Name": {
+    "message": "Information Request"
+  },
+  "defaultTpl2Body": {
+    "message": "Hi {{customer_name}},\n\nWe need additional information regarding your request. Could you please share the following?\n\n- {{info_1}}\n- {{info_2}}\n\nThanks."
+  },
+  "defaultTpl3Name": {
+    "message": "Ticket Closure"
+  },
+  "defaultTpl3Body": {
+    "message": "Hi {{customer_name}},\n\nYour request has been resolved. Please open a new ticket if you have any further questions.\n\nHave a nice day."
+  },
+  "statusError": {
+    "message": "Save failed"
+  },
+  "popupSystemPage": {
+    "message": "YAZIT can't run on this page (browser system page).\n\nTry it on a normal web page (e.g. google.com).",
+    "description": "Shown in popup when user clicks paste on a chrome:// or about: page"
+  },
+  "backupEmpty": {
+    "message": "No backups yet."
+  },
+  "backupRestore": {
+    "message": "Restore"
+  },
+  "backupRestored": {
+    "message": "Backup restored"
+  },
+  "backupsTitle": {
+    "message": "Local backups"
+  },
+  "btnBackups": {
+    "message": "⟲ Backups"
+  },
+  "btnExportClip": {
+    "message": "Copy JSON"
+  },
+  "clipCopied": {
+    "message": "Copied to clipboard"
+  },
+  "confirmRestore": {
+    "message": "Restore this backup? Your current templates are snapshotted first."
+  },
+  "conflictKeepboth": {
+    "message": "Keep both"
+  },
+  "conflictOverwrite": {
+    "message": "Overwrite existing"
+  },
+  "conflictSkip": {
+    "message": "Skip duplicates"
+  },
+  "dragHint": {
+    "message": "Drag to reorder"
+  },
+  "labelTags": {
+    "message": "Search keywords"
+  },
+  "searchNoResults": {
+    "message": "No templates match your search."
+  },
+  "searchPlaceholder": {
+    "message": "Search templates…"
+  },
+  "tagsPlaceholder": {
+    "message": "comma, separated, keywords"
+  },
+  "varInsert": {
+    "message": "Insert variable ▾"
+  },
+  "varNeedField": {
+    "message": "Click inside a template body first."
+  },
+  "varCursor": {
+    "message": "Cursor position after paste"
+  },
+  "varDate": {
+    "message": "Today's date"
+  },
+  "varDateOffset": {
+    "message": "Date offset by N days/weeks/months"
+  },
+  "varTime": {
+    "message": "Current time"
+  },
+  "varDatetime": {
+    "message": "Date and time"
+  },
+  "varField": {
+    "message": "A fill-in field"
+  },
+  "backupCount": {
+    "message": "$COUNT$ templates",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "capReached": {
+    "message": "Template limit reached ($MAX$).",
+    "placeholders": {
+      "max": {
+        "content": "$1"
+      }
+    }
+  },
+  "conflictText": {
+    "message": "$COUNT$ shortcut(s) already exist. Choose how to handle duplicates:",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importSourceDetected": {
+    "message": "$SOURCE$ format detected — converted automatically.",
+    "placeholders": {
+      "source": {
+        "content": "$1"
+      }
+    }
+  },
+  "importSummary": {
+    "message": "($REJECTED$ skipped, $TRUNCATED$ truncated)",
+    "placeholders": {
+      "rejected": {
+        "content": "$1"
+      },
+      "truncated": {
+        "content": "$2"
+      }
+    }
+  },
+  "importTooLarge": {
+    "message": "File too large (max $MAX$ MB).",
+    "placeholders": {
+      "max": {
+        "content": "$1"
+      }
+    }
+  },
+  "formatPlain": {
+    "message": "Plain"
+  },
+  "formatRich": {
+    "message": "Rich text"
+  },
+  "tbBold": {
+    "message": "Bold"
+  },
+  "tbItalic": {
+    "message": "Italic"
+  },
+  "tbUnderline": {
+    "message": "Underline"
+  },
+  "tbLink": {
+    "message": "Insert link"
+  },
+  "tbList": {
+    "message": "Bulleted list"
+  },
+  "fieldsToggle": {
+    "message": "Fields"
+  },
+  "fieldsEmpty": {
+    "message": "Add {{placeholders}} in the body to configure fields here."
+  },
+  "fbLabel": {
+    "message": "Label"
+  },
+  "fbDefault": {
+    "message": "Default"
+  },
+  "fbOptions": {
+    "message": "Options (comma-separated)"
+  },
+  "fbRemember": {
+    "message": "Remember"
+  },
+  "fbAdd": {
+    "message": "+ Add field"
+  },
+  "fbAddPrompt": {
+    "message": "New field name:"
+  },
+  "typeText": {
+    "message": "Text"
+  },
+  "typeMultiline": {
+    "message": "Multiline"
+  },
+  "typeDropdown": {
+    "message": "Dropdown"
+  },
+  "typeDate": {
+    "message": "Date"
+  },
+  "confirmToPlain": {
+    "message": "Convert to plain text? Formatting will be lost."
+  },
+  "metacharWarn": {
+    "message": "Removed | { } , characters from a field value."
+  },
+  "hintIf": {
+    "message": "Conditional text: select part of a template and click “{ if } Condition” — it will only be pasted when a box is ticked or a field has a given value."
+  },
+  "formRequired": {
+    "message": "This field is required."
+  },
+  "formOther": {
+    "message": "Other…"
+  },
+  "formClipboard": {
+    "message": "Paste from clipboard"
+  },
+  "formClipboardFail": {
+    "message": "Clipboard access was denied — paste manually."
+  },
+  "typeCheckbox": {
+    "message": "Checkbox"
+  },
+  "fbRequired": {
+    "message": "Required"
+  },
+  "fbDateDefault": {
+    "message": "today, +3d, -1w or yyyy-MM-dd"
+  },
+  "tbStrike": {
+    "message": "Strikethrough"
+  },
+  "tbH2": {
+    "message": "Heading 2"
+  },
+  "tbH3": {
+    "message": "Heading 3"
+  },
+  "tbOList": {
+    "message": "Numbered list"
+  },
+  "tbCode": {
+    "message": "Inline code"
+  },
+  "tbPre": {
+    "message": "Code block"
+  },
+  "tbTable": {
+    "message": "Insert table"
+  },
+  "linkUrl": {
+    "message": "URL"
+  },
+  "linkText": {
+    "message": "Link text"
+  },
+  "linkRemove": {
+    "message": "Remove link"
+  },
+  "tableRows": {
+    "message": "Rows"
+  },
+  "tableCols": {
+    "message": "Columns"
+  },
+  "tableHeader": {
+    "message": "Header row"
+  },
+  "popoverApply": {
+    "message": "Apply"
+  },
+  "varDateFormat": {
+    "message": "Today, formatted (dd.MM.yyyy)"
+  },
+  "varIf": {
+    "message": "Conditional block"
+  },
+  "newTplName": {
+    "message": "New template $NUM$",
+    "placeholders": {
+      "num": {
+        "content": "$1"
+      }
+    }
+  },
+  "hintsClose": {
+    "message": "Hide tips"
+  },
+  "emptyState": {
+    "message": "No templates yet. Create your first one — it will be ready in the popup, by keyboard shortcut and as a /slash command."
+  },
+  "dlgOk": {
+    "message": "OK"
+  },
+  "foldersHeading": {
+    "message": "Folders"
+  },
+  "folderAll": {
+    "message": "All"
+  },
+  "folderFavorites": {
+    "message": "Favorites"
+  },
+  "folderNone": {
+    "message": "Uncategorized"
+  },
+  "folderNew": {
+    "message": "New folder"
+  },
+  "folderNewOption": {
+    "message": "New folder…"
+  },
+  "folderPrompt": {
+    "message": "Folder name"
+  },
+  "folderRenamePrompt": {
+    "message": "Rename “$NAME$”",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "folderRename": {
+    "message": "Rename folder"
+  },
+  "folderDelete": {
+    "message": "Delete folder"
+  },
+  "folderDeleteConfirm": {
+    "message": "Delete the folder “$NAME$”? Its $COUNT$ template(s) move to Uncategorized; nothing is deleted.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "count": {
+        "content": "$2"
+      }
+    }
+  },
+  "folderExists": {
+    "message": "A folder with that name already exists."
+  },
+  "folderCap": {
+    "message": "Folder limit reached ($MAX$).",
+    "placeholders": {
+      "max": {
+        "content": "$1"
+      }
+    }
+  },
+  "folderEmpty": {
+    "message": "No templates here yet."
+  },
+  "labelFolder": {
+    "message": "Folder"
+  },
+  "favoriteAdd": {
+    "message": "Add to favorites"
+  },
+  "favoriteRemove": {
+    "message": "Remove from favorites"
+  },
+  "folderMoved": {
+    "message": "Moved to $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "themeLabel": {
+    "message": "Theme"
+  },
+  "themeAuto": {
+    "message": "System"
+  },
+  "themeLight": {
+    "message": "Light"
+  },
+  "themeDark": {
+    "message": "Dark"
+  },
+  "dataMenu": {
+    "message": "Import / Export"
+  },
+  "settingsMenu": {
+    "message": "Settings"
+  },
+  "expandAll": {
+    "message": "Expand all"
+  },
+  "collapseAll": {
+    "message": "Collapse all"
+  },
+  "expand": {
+    "message": "Show details"
+  },
+  "collapse": {
+    "message": "Hide details"
+  },
+  "condToggle": {
+    "message": "Condition"
+  },
+  "condTooltip": {
+    "message": "Make part of the text appear only in some cases"
+  },
+  "condIntro": {
+    "message": "Nothing is selected, so the markers go in at the cursor — type the conditional text between them. Tip: select text first to wrap it."
+  },
+  "condIntroSel": {
+    "message": "The selected text will only be pasted when the condition below is met."
+  },
+  "condField": {
+    "message": "Field"
+  },
+  "condFieldPh": {
+    "message": "e.g. urgent"
+  },
+  "condWhen": {
+    "message": "Show when"
+  },
+  "condModeTruthy": {
+    "message": "it is ticked / filled in"
+  },
+  "condModeEquals": {
+    "message": "it equals"
+  },
+  "condValuePh": {
+    "message": "value"
+  },
+  "condElse": {
+    "message": "Also add text for the other case"
+  },
+  "condSelectedText": {
+    "message": "selected text"
+  },
+  "condNeedName": {
+    "message": "Enter a field name to see the result."
+  },
+  "condInsert": {
+    "message": "Insert"
+  },
+  "condTooLong": {
+    "message": "That would take the template over its length limit."
+  },
+  "condWarn_unclosed": {
+    "message": "Condition “$NAME$” is never closed with {{/if}} — its markers would be pasted as plain text.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "condWarn_nested": {
+    "message": "Condition “$NAME$” starts inside another one. Conditions can't be nested — close the first with {{/if}} before starting the next.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "condWarn_strayElse": {
+    "message": "{{else}} appears outside a condition and would be pasted as plain text."
+  },
+  "condWarn_strayClose": {
+    "message": "{{/if}} appears without a matching {{#if}} and would be pasted as plain text."
+  },
+  "condWarn_doubleElse": {
+    "message": "Condition “$NAME$” has more than one {{else}} — only one is allowed.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "condWarn_noName": {
+    "message": "A condition is missing its field name: write {{#if name}}."
+  },
+  "fbRememberHint": {
+    "message": "Remembered values are stored unencrypted on this device. Do not turn this on for passwords or card numbers."
+  },
+  "forgetRemembered": {
+    "message": "Forget remembered values"
+  },
+  "forgetRememberedDone": {
+    "message": "Remembered values cleared."
+  },
+  "forgetAllRemembered": {
+    "message": "Clear all remembered values"
+  },
+  "forgetAllConfirm": {
+    "message": "Clear the remembered values of every template? Templates themselves are not touched."
+  },
+  "condBrokenSkipped": {
+    "message": "Some {{#if}} markers in this template are unbalanced and were pasted as-is."
+  }
+}

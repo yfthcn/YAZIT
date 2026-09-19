@@ -1,0 +1,19 @@
+# Dev tooling only — the extension itself ships zero runtime deps.
+# `npm ci` rebuilds this exactly from package-lock.json, which IS committed.
+node_modules/
+
+# build.py output: dist/yazit-chrome.zip, dist/yazit-firefox.zip and,
+# with --unpacked, dist/firefox-unpacked/ for `web-ext lint`.
+dist/
+
+# build.py's own comment records one of these reaching a package listing.
+__pycache__/
+
+# Dolphin writes these per folder; there is one in ~/Desktop right now.
+.directory
+
+# `chrome --pack-extension` drops a <folder>.pem next to the .crx. That key IS
+# the extension's identity — a leak lets anyone publish an update as us, and it
+# cannot be un-leaked. Same reasoning for store/AMO credentials in a .env.
+*.pem
+.env

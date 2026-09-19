@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title id="page-title">YAZIT</title>
+  <!-- Before the stylesheet's first paint: sets data-theme (see theme.js). -->
+  <script src="theme.js"></script>
+  <style>
+    /* YAZIT palette — amber accent; warm neutrals in light, slate-navy in
+       dark. --tl-primary is the FILL colour (buttons, chips); text/links/focus rings on a plain background
+       use --tl-primary-text, which keeps ≥4.5:1 contrast in both themes.
+       Light on :root, dark on [data-theme="dark"] — theme.js resolves
+       "auto" and sets the attribute before first paint. */
+    :root {
+      color-scheme: light;
+      --tl-primary: #e8a33d;
+      --tl-primary-hover: #d4912a;
+      --tl-on-primary: #1a1408;
+      --tl-primary-text: #8f5d10;
+      --tl-primary-soft: #fbf0dc;
+      --tl-ring: rgba(232,163,61,.28);
+      --tl-page: #f7f5f0;
+      --tl-bg: #ffffff;
+      --tl-field: #ffffff;
+      --tl-border: #e6e0d4;
+      --tl-text: #1c1a16;
+      --tl-muted: #6f6858;
+      --tl-subtle: #a39b8a;
+      --tl-star: #e0a100;
+      /* Folder dots — same palette as the settings page (TL.folderSlots). */
+      --fc-0: #1e40af;
+      --fc-1: #166534;
+      --fc-2: #5b21b6;
+      --fc-3: #9d174d;
+      --fc-4: #991b1b;
+      --fc-5: #9a3412;
+      --fc-6: #155e75;
+      --fc-7: #854d0e;
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --tl-primary-hover: #f0b35a;
+      --tl-primary-text: #f0b95a;
+      --tl-primary-soft: #1c2b47;
+      --tl-page: #0b1120;
+      --tl-bg: #111a2e;
+      --tl-field: #0a1122;
+      --tl-border: #22304d;
+      --tl-text: #e7edf7;
+      --tl-muted: #8e9bb6;
+      --tl-subtle: #5f6d8a;
+      --tl-star: #facc15;
+      --fc-0: #93c5fd;
+      --fc-1: #86efac;
+      --fc-2: #c4b5fd;
+      --fc-3: #f9a8d4;
+      --fc-4: #fca5a5;
+      --fc-5: #fdba74;
+      --fc-6: #67e8f9;
+      --fc-7: #fde047;
+    }
+    * { box-sizing: border-box; }
+    body {
+      width: 320px;
+      margin: 0;
+      padding: 12px;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 14px;
+      color: var(--tl-text);
+      background: var(--tl-page);
+    }
+    .header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .header h3 {
+      margin: 0;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: .5px;
+    }
+    .header h3 img { width: 20px; height: 20px; }
+    .ver {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0;
+      color: var(--tl-muted);
+      font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+      border: 1px solid var(--tl-border);
+      border-radius: 4px;
+      padding: 0 4px;
+    }
+    .tagline {
+      font-size: 11px;
+      color: var(--tl-muted);
+      font-style: italic;
+    }
+    .template-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .template-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      background: var(--tl-bg);
+      border: 1px solid var(--tl-border);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: border-color .15s, background .15s;
+    }
+    .template-item:hover {
+      background: var(--tl-primary-soft);
+      border-color: var(--tl-primary);
+    }
+    .template-item:focus-visible {
+      outline: 2px solid var(--tl-primary-text);
+      outline-offset: 1px;
+    }
+    .template-name {
+      font-weight: 500;
+    }
+    .template-shortcut {
+      flex: none;
+      margin-left: 8px;
+      white-space: nowrap;
+      font-size: 11px;
+      color: var(--tl-muted);
+      font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+      background: var(--tl-field);
+      padding: 2px 6px;
+      border-radius: 3px;
+      border: 1px solid var(--tl-border);
+    }
+    .empty {
+      color: var(--tl-muted);
+      text-align: center;
+      padding: 20px;
+    }
+    .footer {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--tl-border);
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+    .footer a {
+      color: var(--tl-primary-text);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .footer a:hover { text-decoration: underline; }
+    .search-box {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 10px;
+      border: 1px solid var(--tl-border);
+      border-radius: 6px;
+      font-size: 13px;
+      font-family: inherit;
+      background: var(--tl-field);
+      color: var(--tl-text);
+    }
+    .search-box:focus {
+      outline: none;
+      border-color: var(--tl-primary);
+      box-shadow: 0 0 0 3px var(--tl-ring);
+    }
+    .chips {
+      display: flex;
+      gap: 6px;
+      margin: -2px 0 10px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--tl-border) transparent;
+      overscroll-behavior-x: contain;
+      transition: opacity .15s;
+    }
+    .chips::-webkit-scrollbar { height: 4px; }
+    .chips::-webkit-scrollbar-thumb { background: var(--tl-border); border-radius: 2px; }
+    .chips::-webkit-scrollbar-track { background: transparent; }
+    /* Fade the edge(s) that hide more chips, so the overflow is visible. */
+    .chips.more-r { -webkit-mask-image: linear-gradient(to right, #000 85%, transparent); mask-image: linear-gradient(to right, #000 85%, transparent); }
+    .chips.more-l { -webkit-mask-image: linear-gradient(to left, #000 85%, transparent); mask-image: linear-gradient(to left, #000 85%, transparent); }
+    .chips.more-l.more-r { -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent); mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent); }
+    .chips.dragging { cursor: grabbing; user-select: none; }
+    .chips.dragging .chip { cursor: grabbing; }
+    .chips[hidden] { display: none; }
+    .chips.dimmed { opacity: .45; }
+    .chip {
+      flex: none;
+      padding: 3px 10px;
+      border: 1px solid var(--tl-border);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--tl-muted);
+      font: inherit;
+      font-size: 12px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .chip:hover { color: var(--tl-text); border-color: var(--tl-muted); }
+    .chip .fc-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
+    .fc-dot[data-fc="0"] { background: var(--fc-0); }
+    .fc-dot[data-fc="1"] { background: var(--fc-1); }
+    .fc-dot[data-fc="2"] { background: var(--fc-2); }
+    .fc-dot[data-fc="3"] { background: var(--fc-3); }
+    .fc-dot[data-fc="4"] { background: var(--fc-4); }
+    .fc-dot[data-fc="5"] { background: var(--fc-5); }
+    .fc-dot[data-fc="6"] { background: var(--fc-6); }
+    .fc-dot[data-fc="7"] { background: var(--fc-7); }
+    .chip[aria-pressed="true"] .fc-dot { box-shadow: 0 0 0 1.5px var(--tl-on-primary); }
+    .chip:focus-visible { outline: 2px solid var(--tl-primary-text); outline-offset: 1px; }
+    .chip[aria-pressed="true"] {
+      background: var(--tl-primary);
+      border-color: var(--tl-primary);
+      color: var(--tl-on-primary);
+      font-weight: 600;
+    }
+    .template-name .star {
+      color: var(--tl-star);
+      margin-right: 6px;
+      font-size: 12px;
+    }
+    #popup-error {
+      background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b;
+      padding: 10px 12px; border-radius: 6px; font-size: 12px;
+      margin-top: 10px; line-height: 1.4;
+    }
+    :root[data-theme="dark"] #popup-error { background: #3f1d1d; border-color: #7f1d1d; color: #fca5a5; }
+    .credits {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--tl-border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      color: var(--tl-muted);
+    }
+    .credits a {
+      color: var(--tl-muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .credits a:hover { color: var(--tl-primary-text); }
+
+    /* Honour the OS "reduce motion" setting: the transitions here are short,
+       but the smooth scrolls in options.js are not, and a vestibular trigger
+       is not a matter of duration. Kept as the last rule in the sheet so it
+       wins without needing a selector arms race. */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 1ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h3><img src="icons/icon32.png" alt="" /><span id="heading"></span><span class="ver" id="header-version"></span></h3>
+    <span class="tagline" id="tagline"></span>
+  </div>
+  <input type="search" id="search" class="search-box" autocomplete="off" />
+  <div id="chips" class="chips" role="toolbar" hidden></div>
+  <div id="list" class="template-list" role="list"></div>
+  <div class="footer">
+    <a id="options-link"></a>
+    <span id="shortcut-hint" style="color:var(--tl-muted)"></span>
+  </div>
+  <div class="credits">
+    <a href="https://kaktusdev.net" target="_blank" rel="noopener noreferrer">kaktusdev.net</a>
+    <span>·</span>
+    <a href="https://github.com/yfthcn" target="_blank" rel="noopener noreferrer" title="GitHub">
+      <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+      </svg>
+      GitHub
+    </a>
+    <span>·</span>
+    <span id="version"></span>
+  </div>
+  <script src="common.js"></script>
+  <script src="common-ui.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

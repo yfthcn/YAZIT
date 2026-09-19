@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title id="page-title">YAZIT</title>
+  <!-- Before the stylesheet's first paint: sets data-theme (see theme.js). -->
+  <script src="theme.js"></script>
+  <style>
+    /* YAZIT palette — amber accent; warm neutrals in light, slate-navy in
+       dark (same tokens as popup.html and content.js).
+       --tl-primary is the FILL colour; text, links and focus rings on a plain
+       background use --tl-primary-text (≥4.5:1 in both themes).
+       theme.js always sets data-theme on <html> to the RESOLVED theme
+       ("auto" → light/dark from the OS), so :root is the light palette and
+       [data-theme="dark"] the dark one — no prefers-color-scheme here. */
+    :root {
+      color-scheme: light;
+      --tl-primary: #e8a33d;
+      --tl-primary-hover: #d4912a;
+      --tl-on-primary: #1a1408;
+      --tl-primary-text: #8f5d10;
+      --tl-primary-soft: #fbf0dc;
+      --tl-ring: rgba(232,163,61,.28);
+      --tl-page: #f7f5f0;
+      --tl-bg: #ffffff;
+      --tl-field: #ffffff;
+      --tl-raised: #ffffff;
+      --tl-hover: #f3efe6;
+      --tl-inset: rgba(60,45,20,.06);
+      --tl-border: #e6e0d4;
+      --tl-input-border: #d8d0c0;
+      --tl-text: #1c1a16;
+      --tl-label: #4a4438;
+      --tl-muted: #6f6858;
+      --tl-subtle: #a39b8a;
+      --tl-star: #e0a100;
+      --tl-success: #2f7d4f;
+      --tl-danger: #c2410c;
+      --tl-danger-border: #f5c9b3;
+      --tl-danger-soft: #fdf1ea;
+      --tl-warn-bg: #fdf6e7;
+      --tl-warn-border: #eed6a6;
+      /* Placeholder colours: 8 field slots + condition markers + dynamic vars
+         (TL.placeholderSlots / TL.placeholderKey). fg ≥ 4.5:1 on its bg. */
+      --ph-0-bg: #bfdbfe; --ph-0-fg: #1e40af;
+      --ph-1-bg: #bbf7d0; --ph-1-fg: #166534;
+      --ph-2-bg: #ddd6fe; --ph-2-fg: #5b21b6;
+      --ph-3-bg: #fbcfe8; --ph-3-fg: #9d174d;
+      --ph-4-bg: #fecaca; --ph-4-fg: #991b1b;
+      --ph-5-bg: #fed7aa; --ph-5-fg: #9a3412;
+      --ph-6-bg: #a5f3fc; --ph-6-fg: #155e75;
+      --ph-7-bg: #fef08a; --ph-7-fg: #854d0e;
+      --ph-ctl-bg: #1e293b; --ph-ctl-fg: #fbbf24;
+      --ph-dyn-bg: #e5e7eb; --ph-dyn-fg: #374151;
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --tl-primary-hover: #f0b35a;
+      --tl-primary-text: #f0b95a;
+      --tl-primary-soft: #1c2b47;
+      --tl-page: #0b1120;
+      --tl-bg: #111a2e;
+      --tl-field: #0a1122;
+      --tl-raised: #16213a;
+      --tl-hover: #1f2c48;
+      --tl-inset: rgba(170,195,255,.08);
+      --tl-border: #22304d;
+      --tl-input-border: #2f3f62;
+      --tl-text: #e7edf7;
+      --tl-label: #c5d0e3;
+      --tl-muted: #8e9bb6;
+      --tl-subtle: #5f6d8a;
+      --tl-star: #facc15;
+      --tl-success: #6fcf97;
+      --tl-danger: #f28b6b;
+      --tl-danger-border: #5b2a2a;
+      --tl-danger-soft: #2a1720;
+      --tl-warn-bg: #141f35;
+      --tl-warn-border: #34466b;
+      --ph-0-bg: #1e3a5f; --ph-0-fg: #93c5fd;
+      --ph-1-bg: #173d2a; --ph-1-fg: #86efac;
+      --ph-2-bg: #33285c; --ph-2-fg: #c4b5fd;
+      --ph-3-bg: #4a1f37; --ph-3-fg: #f9a8d4;
+      --ph-4-bg: #4c1d1d; --ph-4-fg: #fca5a5;
+      --ph-5-bg: #4a2a14; --ph-5-fg: #fdba74;
+      --ph-6-bg: #123e4a; --ph-6-fg: #67e8f9;
+      --ph-7-bg: #3f3a12; --ph-7-fg: #fde047;
+      --ph-ctl-bg: #fbbf24; --ph-ctl-fg: #1a1408;
+      --ph-dyn-bg: #1f2937; --ph-dyn-fg: #cbd5e1;
+    }
+    * { box-sizing: border-box; }
+    input[type="checkbox"], input[type="radio"] { accent-color: var(--tl-primary); }
+    body {
+      max-width: 860px;
+      margin: 30px auto;
+      padding: 20px;
+      font-family: system-ui, -apple-system, sans-serif;
+      color: var(--tl-text);
+      background: var(--tl-page);
+      line-height: 1.5;
+    }
+    h1 {
+      font-size: 24px;
+      margin: 0 0 4px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    h1 img { width: 32px; height: 32px; }
+    h1 .title-version {
+      font-size: 12px; font-weight: 500; color: var(--tl-muted);
+      font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+      border: 1px solid var(--tl-border); border-radius: 5px; padding: 1px 6px;
+    }
+    .subtitle {
+      color: var(--tl-muted);
+      font-size: 14px;
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+    .template {
+      border: 1px solid var(--tl-border);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      background: var(--tl-bg);
+      transition: border-color .15s;
+    }
+    .template.selected {
+      background: var(--tl-primary-soft);
+      border-color: var(--tl-primary);
+    }
+    .template-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+    /* Collapsed card = one scannable row; the editor lives in .template-content. */
+    .template.collapsed { padding: 8px 16px; margin-bottom: 6px; }
+    .template.collapsed .template-header { margin-bottom: 0; }
+    .template.collapsed .template-content { display: none; }
+    .template:not(.selected):hover { border-color: var(--tl-input-border); }
+    .expander {
+      border: 0; background: transparent; padding: 2px 4px; line-height: 1;
+      color: var(--tl-muted); font-size: 12px; transition: transform .15s;
+    }
+    .expander:hover:not(:disabled) { background: transparent; color: var(--tl-text); }
+    .template:not(.collapsed) .expander { transform: rotate(90deg); }
+    .tpl-chips { display: inline-flex; gap: 6px; flex: 0 1 auto; min-width: 0; overflow: hidden; }
+    .chip {
+      font-size: 11px; line-height: 1.6; padding: 0 7px; border-radius: 10px;
+      border: 1px solid var(--tl-border); color: var(--tl-muted); white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis; max-width: 160px;
+    }
+    .chip.sc { font-family: ui-monospace, 'SF Mono', Menlo, monospace; color: var(--tl-primary-text); }
+    .chip[hidden] { display: none; }
+    kbd.slot {
+      font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px;
+      border: 1px solid var(--tl-border); border-bottom-width: 2px; border-radius: 4px;
+      padding: 0 5px; color: var(--tl-muted); background: var(--tl-inset); white-space: nowrap;
+    }
+    .template-header input[type="checkbox"] {
+      width: auto;
+      margin: 0;
+      cursor: pointer;
+    }
+    .template-name-inline {
+      font-weight: 600;
+      font-size: 14px;
+      flex: 0 1 auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .index-label {
+      font-size: 11px;
+      color: var(--tl-muted);
+      margin-left: auto;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .row > div { flex: 1; }
+    label {
+      display: block;
+      font-size: 12px;
+      color: var(--tl-label);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid var(--tl-input-border);
+      border-radius: 4px;
+      font-size: 14px;
+      font-family: inherit;
+      background: var(--tl-field);
+      color: var(--tl-text);
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--tl-primary);
+      box-shadow: 0 0 0 3px var(--tl-ring);
+    }
+    textarea {
+      min-height: 100px;
+      font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+      font-size: 13px;
+    }
+    button {
+      padding: 8px 14px;
+      border: 1px solid var(--tl-input-border);
+      background: var(--tl-raised);
+      color: var(--tl-text);
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      font-family: inherit;
+      transition: all .15s;
+    }
+    button:hover:not(:disabled) {
+      background: var(--tl-hover);
+      border-color: var(--tl-subtle);
+    }
+    button:focus-visible {
+      outline: 2px solid var(--tl-primary-text);
+      outline-offset: 2px;
+    }
+    button.primary {
+      background: var(--tl-primary);
+      color: var(--tl-on-primary);
+      font-weight: 600;
+      border-color: var(--tl-primary);
+    }
+    button.primary:hover:not(:disabled) {
+      background: var(--tl-primary-hover);
+    }
+    button.danger {
+      color: var(--tl-danger);
+      border-color: var(--tl-danger-border);
+    }
+    button.danger:hover:not(:disabled) {
+      background: var(--tl-danger-soft);
+    }
+    button.small {
+      padding: 4px 10px;
+      font-size: 12px;
+    }
+    button:disabled { opacity: .4; cursor: not-allowed; }
+    .actions { display: flex; gap: 8px; margin-top: 10px; }
+    .top-actions {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .selection-bar {
+      background: var(--tl-primary-soft);
+      border: 1px solid var(--tl-primary);
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .selection-bar.visible { display: flex; }
+    .hint {
+      background: var(--tl-warn-bg);
+      border: 1px solid var(--tl-warn-border);
+      padding: 12px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .hint-close {
+      position: absolute; top: 6px; right: 6px;
+      border: none; background: none; font-size: 16px; line-height: 1;
+      padding: 4px 8px; color: var(--tl-muted); cursor: pointer;
+    }
+    .hint-close:hover { color: var(--tl-text); background: none; }
+    .empty-state {
+      text-align: center; padding: 40px 20px; color: var(--tl-muted);
+      border: 1px dashed var(--tl-border); border-radius: 8px;
+    }
+    .empty-state p { margin: 0 0 14px; font-size: 14px; }
+    .dlg-input { margin-top: 10px; }
+    .hint ul { margin: 6px 0 0 18px; padding: 0; }
+    .hint li { margin-bottom: 4px; }
+    .hint code {
+      background: var(--tl-inset);
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-family: ui-monospace, monospace;
+      font-size: 12px;
+    }
+    .status {
+      margin-left: 10px;
+      color: var(--tl-success);
+      font-size: 13px;
+      font-weight: 500;
+      transition: opacity .3s;
+    }
+    /* Dropdown menus (Import/Export, Settings) — same surface as .var-list */
+    .dd { position: relative; }
+    .dd-right { margin-left: auto; }
+    .dd-btn::after { content: " \25BE"; font-size: 11px; }
+    .dd-list .dd-sep { height: 1px; background: var(--tl-border); margin: 4px 0; }
+    .dd-right .dd-list { left: auto; right: 0; }
+    .dd-list.dd-form { padding: 12px 14px; min-width: 240px; }
+    .dd-list.dd-form.open { display: grid; gap: 4px; }
+    .dd-form label { margin: 0; }
+    .dd-form select { margin-bottom: 8px; font-size: 13px; padding: 5px 8px; }
+    .dd-form select:last-child { margin-bottom: 0; }
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal-backdrop.visible { display: flex; }
+    .modal {
+      background: var(--tl-raised);
+      padding: 24px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 20px 50px rgba(0,0,0,.2);
+    }
+    .modal h3 { margin: 0 0 12px; }
+    .modal-preview {
+      background: var(--tl-inset);
+      padding: 10px 12px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: var(--tl-label);
+      margin: 10px 0;
+    }
+    .radio-group label {
+      display: block;
+      padding: 10px 12px;
+      border: 1px solid var(--tl-border);
+      border-radius: 4px;
+      margin-bottom: 6px;
+      cursor: pointer;
+      font-weight: normal;
+      font-size: 14px;
+      color: var(--tl-text);
+    }
+    /* The global input { width: 100% } made each radio a full-width row of its
+       own, centring the circle above its label. */
+    .radio-group label { display: flex; align-items: center; gap: 10px; }
+    .radio-group input[type="radio"] { width: auto; margin: 0; flex: none; }
+    .radio-group label:has(input:checked) {
+      background: var(--tl-primary-soft);
+      border-color: var(--tl-primary);
+    }
+    .modal-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+      margin-top: 16px;
+    }
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--tl-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--tl-muted);
+    }
+    footer a {
+      color: var(--tl-primary-text);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    footer a.gh {
+      color: var(--tl-label);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    footer a:hover { text-decoration: underline; }
+    footer .version { margin-left: 10px; color: var(--tl-muted); font-family: ui-monospace, monospace; font-size: 11px; }
+    /* Search */
+    .search-box {
+      flex: 1; min-width: 160px;
+      padding: 8px 10px; border: 1px solid var(--tl-border);
+      border-radius: 6px; font-size: 13px; font-family: inherit;
+    }
+    /* Tags */
+    .tag-input { font-size: 13px; }
+    /* Drag handle */
+    .drag-handle { cursor: grab; color: var(--tl-subtle); font-size: 16px; user-select: none; padding: 0 2px; }
+    .template.dragging { opacity: .5; }
+    .template.drag-over { border-color: var(--tl-primary); border-style: dashed; }
+    /* Variable menu + generic dropdowns */
+    .var-menu { position: relative; }
+    .var-list, .dd-list {
+      position: absolute; top: 100%; left: 0; z-index: 20; margin-top: 4px;
+      background: var(--tl-raised); border: 1px solid var(--tl-border); border-radius: 6px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.15); min-width: 220px; display: none;
+      padding: 4px 0;
+    }
+    .var-list.open, .dd-list.open { display: block; }
+    .var-list button, .dd-list button {
+      display: block; width: 100%; text-align: left; border: none; background: none;
+      padding: 8px 12px; font-size: 13px; border-radius: 0;
+    }
+    .var-list button:hover, .dd-list button:hover:not(:disabled) { background: var(--tl-primary-soft); }
+    .var-list code { font-family: ui-monospace, monospace; color: var(--tl-primary-text); }
+    /* Backups panel */
+    .panel {
+      border: 1px solid var(--tl-border); border-radius: 8px;
+      padding: 14px 16px; margin-bottom: 16px; background: var(--tl-bg); display: none;
+    }
+    .panel.visible { display: block; }
+    .panel h3 { margin: 0 0 10px; font-size: 14px; }
+    .backup-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 0; border-bottom: 1px solid var(--tl-border); font-size: 13px;
+    }
+    .backup-item:last-child { border-bottom: none; }
+    .backup-meta { color: var(--tl-muted); }
+    /* Conflict group */
+    .conflict-note {
+      background: var(--tl-warn-bg); border: 1px solid var(--tl-warn-border);
+      padding: 10px 12px; border-radius: 6px; font-size: 13px; margin: 10px 0; display: none;
+    }
+    .conflict-note.visible { display: block; }
+    .source-note { font-size: 12px; color: var(--tl-muted); margin-top: 6px; }
+    /* Rich-text editor */
+    /* wrap: below ~370px the label + three toggles do not fit on one line and
+       pushed .fmt-toggle past the viewport (16px of document overflow). */
+    .body-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 4px; }
+    .body-head label { margin: 0; }
+    .fmt-toggle { display: inline-flex; margin-left: auto; }
+    .fmt-toggle button { font-size: 12px; padding: 3px 10px; border-radius: 0; }
+    .fmt-toggle button:first-child { border-radius: 4px 0 0 4px; }
+    .fmt-toggle button:last-child { border-radius: 0 4px 4px 0; border-left: none; }
+    .fmt-toggle button.active { background: var(--tl-primary); color: var(--tl-on-primary); border-color: var(--tl-primary); }
+    .rt-toolbar { display: flex; gap: 4px; margin-bottom: 6px; flex-wrap: wrap; align-items: center; position: relative; }
+    .rt-toolbar button { padding: 4px 9px; font-size: 13px; min-width: 32px; }
+    .rt-sep { width: 1px; height: 20px; background: var(--tl-border); margin: 0 4px; }
+    .rt-popover {
+      position: absolute; top: 100%; left: 0; z-index: 30; margin-top: 6px;
+      background: var(--tl-raised); border: 1px solid var(--tl-border); border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.15); padding: 12px; min-width: 300px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .rt-popover label { margin: 0; }
+    .rt-popover label input { margin-top: 4px; font-size: 13px; }
+    .rt-popover label.rem { display: inline-flex; align-items: center; gap: 6px; font-weight: 500; font-size: 12px; }
+    .rt-popover label.rem input { width: auto; margin: 0; }
+    .rt-popover input.invalid { border-color: var(--tl-danger); box-shadow: 0 0 0 3px rgba(220,38,38,.15); }
+    .rt-popover-actions { display: flex; gap: 6px; justify-content: flex-end; margin-top: 4px; }
+    .rt-popover-actions .danger { margin-right: auto; }
+    .rich-editor {
+      min-height: 100px; max-height: 320px; overflow-y: auto;
+      padding: 8px 10px; border: 1px solid var(--tl-input-border); border-radius: 4px;
+      font-size: 14px; background: var(--tl-field); color: var(--tl-text); line-height: 1.5;
+    }
+    .rich-editor:focus { outline: none; border-color: var(--tl-primary); box-shadow: 0 0 0 3px var(--tl-ring); }
+    .rich-editor h2 { font-size: 18px; margin: 10px 0 4px; }
+    .rich-editor h3 { font-size: 15px; margin: 8px 0 4px; }
+    .rich-editor p { margin: 0 0 6px; }
+    .rich-editor code { font-family: ui-monospace, monospace; font-size: 12.5px; background: var(--tl-inset); padding: 1px 4px; border-radius: 3px; }
+    .rich-editor pre { font-family: ui-monospace, monospace; font-size: 12.5px; background: var(--tl-inset); padding: 8px 10px; border-radius: 4px; white-space: pre-wrap; margin: 6px 0; }
+    .rich-editor table { border-collapse: collapse; margin: 6px 0; width: 100%; }
+    .rich-editor th, .rich-editor td { border: 1px solid var(--tl-border); padding: 4px 8px; min-width: 40px; vertical-align: top; }
+    .rich-editor th { background: var(--tl-primary-soft); font-weight: 600; text-align: left; }
+    /* Rich editor: one CSS highlight per colour key. Literal colours on
+       purpose — var() inside ::highlight() is not reliable before Chrome 118. */
+    ::highlight(tl-ph-0) { background-color: #bfdbfe; color: #1e40af; }
+    ::highlight(tl-ph-1) { background-color: #bbf7d0; color: #166534; }
+    ::highlight(tl-ph-2) { background-color: #ddd6fe; color: #5b21b6; }
+    ::highlight(tl-ph-3) { background-color: #fbcfe8; color: #9d174d; }
+    ::highlight(tl-ph-4) { background-color: #fecaca; color: #991b1b; }
+    ::highlight(tl-ph-5) { background-color: #fed7aa; color: #9a3412; }
+    ::highlight(tl-ph-6) { background-color: #a5f3fc; color: #155e75; }
+    ::highlight(tl-ph-7) { background-color: #fef08a; color: #854d0e; }
+    ::highlight(tl-ph-ctl) { background-color: #1e293b; color: #fbbf24; }
+    ::highlight(tl-ph-dyn) { background-color: #e5e7eb; color: #374151; }
+    /* Plain editor: the textarea's text is transparent and a mirror layer
+       behind it draws the same text, tokens in colour — so plain and rich
+       look alike. The textarea still owns caret, selection, IME and undo.
+       The two boxes must match metric-for-metric (font, padding, border,
+       wrapping); tests pin the shared values. */
+    .ph-wrap { position: relative; display: block; }
+    .ph-wrap textarea {
+      position: relative; z-index: 1; display: block;
+      background: transparent; line-height: 1.5;
+      color: transparent; caret-color: var(--tl-text);
+      resize: vertical; /* a sideways drag would leave the mirror at full width */
+    }
+    .ph-backdrop {
+      position: absolute; inset: 0; z-index: 0; overflow: hidden;
+      padding: 8px 10px; border: 1px solid transparent; border-radius: 4px;
+      background: var(--tl-field); color: var(--tl-text);
+      font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 13px; line-height: 1.5;
+      white-space: pre-wrap; overflow-wrap: break-word; word-break: normal;
+      pointer-events: none;
+    }
+    .ph-backdrop mark { border-radius: 3px; }
+    /* Selected text stays transparent in the textarea; the mirror's text
+       shows through a translucent selection. */
+    .ph-wrap textarea::selection { color: transparent; background: rgba(59,130,246,.30); }
+    .ph-backdrop mark.ph-0 { background: var(--ph-0-bg); color: var(--ph-0-fg); }
+    .ph-backdrop mark.ph-1 { background: var(--ph-1-bg); color: var(--ph-1-fg); }
+    .ph-backdrop mark.ph-2 { background: var(--ph-2-bg); color: var(--ph-2-fg); }
+    .ph-backdrop mark.ph-3 { background: var(--ph-3-bg); color: var(--ph-3-fg); }
+    .ph-backdrop mark.ph-4 { background: var(--ph-4-bg); color: var(--ph-4-fg); }
+    .ph-backdrop mark.ph-5 { background: var(--ph-5-bg); color: var(--ph-5-fg); }
+    .ph-backdrop mark.ph-6 { background: var(--ph-6-bg); color: var(--ph-6-fg); }
+    .ph-backdrop mark.ph-7 { background: var(--ph-7-bg); color: var(--ph-7-fg); }
+    .ph-backdrop mark.ph-ctl { background: var(--ph-ctl-bg); color: var(--ph-ctl-fg); }
+    .ph-backdrop mark.ph-dyn { background: var(--ph-dyn-bg); color: var(--ph-dyn-fg); }
+    /* Folder colours reuse the placeholder palette (TL.folderSlots). */
+    .chip.fd[data-fc="0"] { background: var(--ph-0-bg); color: var(--ph-0-fg); border-color: transparent; }
+    .chip.fd[data-fc="1"] { background: var(--ph-1-bg); color: var(--ph-1-fg); border-color: transparent; }
+    .chip.fd[data-fc="2"] { background: var(--ph-2-bg); color: var(--ph-2-fg); border-color: transparent; }
+    .chip.fd[data-fc="3"] { background: var(--ph-3-bg); color: var(--ph-3-fg); border-color: transparent; }
+    .chip.fd[data-fc="4"] { background: var(--ph-4-bg); color: var(--ph-4-fg); border-color: transparent; }
+    .chip.fd[data-fc="5"] { background: var(--ph-5-bg); color: var(--ph-5-fg); border-color: transparent; }
+    .chip.fd[data-fc="6"] { background: var(--ph-6-bg); color: var(--ph-6-fg); border-color: transparent; }
+    .chip.fd[data-fc="7"] { background: var(--ph-7-bg); color: var(--ph-7-fg); border-color: transparent; }
+    .nav-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+    .nav-dot[data-fc="0"] { background: var(--ph-0-fg); }
+    .nav-dot[data-fc="1"] { background: var(--ph-1-fg); }
+    .nav-dot[data-fc="2"] { background: var(--ph-2-fg); }
+    .nav-dot[data-fc="3"] { background: var(--ph-3-fg); }
+    .nav-dot[data-fc="4"] { background: var(--ph-4-fg); }
+    .nav-dot[data-fc="5"] { background: var(--ph-5-fg); }
+    .nav-dot[data-fc="6"] { background: var(--ph-6-fg); }
+    .nav-dot[data-fc="7"] { background: var(--ph-7-fg); }
+    /* Fields panel: each row's name wears its editor colour. */
+    .field-row .fname[data-ph] { padding: 1px 7px; border-radius: 10px; min-width: 0; }
+    .field-row .fname[data-ph="0"] { background: var(--ph-0-bg); color: var(--ph-0-fg); }
+    .field-row .fname[data-ph="1"] { background: var(--ph-1-bg); color: var(--ph-1-fg); }
+    .field-row .fname[data-ph="2"] { background: var(--ph-2-bg); color: var(--ph-2-fg); }
+    .field-row .fname[data-ph="3"] { background: var(--ph-3-bg); color: var(--ph-3-fg); }
+    .field-row .fname[data-ph="4"] { background: var(--ph-4-bg); color: var(--ph-4-fg); }
+    .field-row .fname[data-ph="5"] { background: var(--ph-5-bg); color: var(--ph-5-fg); }
+    .field-row .fname[data-ph="6"] { background: var(--ph-6-bg); color: var(--ph-6-fg); }
+    .field-row .fname[data-ph="7"] { background: var(--ph-7-bg); color: var(--ph-7-fg); }
+    .char-count { font-size: 11px; color: var(--tl-muted); text-align: right; margin-top: 2px; }
+    /* Field-builder panel */
+    .fields-toggle { font-size: 12px; padding: 3px 10px; }
+    .fields-panel { margin-top: 8px; border: 1px solid var(--tl-border); border-radius: 6px; padding: 10px; display: none; background: var(--tl-bg); }
+    .fields-panel.open { display: block; }
+    .field-row { display: flex; gap: 6px; align-items: center; margin-bottom: 6px; flex-wrap: wrap; }
+    .field-row .fname { font-family: ui-monospace, monospace; font-size: 12px; min-width: 96px; font-weight: 600; color: var(--tl-primary-text); }
+    .field-row input, .field-row select { font-size: 12px; padding: 4px 6px; width: auto; flex: 1; min-width: 78px; }
+    .field-row label.rem { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 500; flex: 0; white-space: nowrap; margin: 0; }
+    .field-row label.rem input { flex: 0; min-width: 0; width: auto; }
+    .fields-empty { font-size: 12px; color: var(--tl-muted); }
+    .field-warn { color: var(--tl-danger); font-size: 11px; margin-top: 4px; }
+    /* Condition builder */
+    .cond-panel { margin-top: 8px; border: 1px solid var(--tl-border); border-radius: 6px; padding: 12px; display: none; background: var(--tl-bg); font-size: 13px; }
+    .cond-panel.open { display: block; }
+    .cond-intro { color: var(--tl-muted); font-size: 12px; margin: 0 0 10px; }
+    .cond-grid { display: grid; grid-template-columns: auto 1fr; gap: 8px 12px; align-items: center; }
+    .cond-grid > label { margin: 0; }
+    .cond-grid input[type="text"] { font-size: 13px; padding: 5px 8px; }
+    .cond-mode { display: flex; flex-direction: column; gap: 6px; }
+    .cond-mode label { display: flex; align-items: center; gap: 8px; margin: 0; font-weight: 500; color: var(--tl-text); }
+    .cond-mode input[type="radio"], .cond-else input { width: auto; margin: 0; }
+    .cond-mode .cond-eq { display: flex; align-items: center; gap: 8px; }
+    .cond-mode .cond-eq input[type="text"] { flex: 1; max-width: 220px; }
+    .cond-else { display: flex; align-items: center; gap: 8px; margin: 10px 0 0; font-weight: 500; color: var(--tl-text); }
+    .cond-preview {
+      margin-top: 10px; padding: 6px 10px; border-radius: 4px; background: var(--tl-inset);
+      font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: var(--tl-primary-text);
+      overflow-x: auto; white-space: nowrap;
+    }
+    .cond-actions { display: flex; gap: 6px; justify-content: flex-end; margin-top: 10px; }
+    .cond-warn {
+      margin-top: 6px; padding: 6px 10px; border-radius: 4px; font-size: 12px;
+      background: var(--tl-danger-soft); border: 1px solid var(--tl-danger-border); color: var(--tl-danger);
+    }
+    .cond-warn[hidden] { display: none; }
+    .cond-panel input.invalid { border-color: var(--tl-danger); box-shadow: 0 0 0 3px rgba(220,38,38,.15); }
+    /* Folders & favorites (v4) */
+    body.has-nav { max-width: 1080px; }
+    .workspace { display: block; }
+    body.has-nav .workspace {
+      display: grid;
+      grid-template-columns: 208px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+    .folder-nav[hidden] { display: none; }
+    .folder-nav {
+      position: sticky;
+      top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      max-height: calc(100vh - 32px);
+      overflow-y: auto;
+    }
+    .nav-row { display: flex; align-items: center; border-radius: 6px; }
+    .nav-row:hover, .nav-row:focus-within { background: var(--tl-hover); }
+    .nav-item {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--tl-text);
+      text-align: left;
+      font-size: 13px;
+    }
+    .nav-item:hover:not(:disabled) { background: transparent; }
+    .nav-item .nav-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .nav-item .nav-count { font-size: 11px; color: var(--tl-muted); font-variant-numeric: tabular-nums; }
+    .nav-row.active { background: var(--tl-primary-soft); }
+    .nav-row.active .nav-item { color: var(--tl-primary-text); font-weight: 600; }
+    .nav-row.drop-target { outline: 2px dashed var(--tl-primary-text); outline-offset: -2px; }
+    .nav-act {
+      padding: 2px 6px;
+      border: 0;
+      background: transparent;
+      color: var(--tl-muted);
+      font-size: 12px;
+      opacity: 0;
+    }
+    .nav-row:hover .nav-act, .nav-row:focus-within .nav-act { opacity: 1; }
+    .nav-act:hover:not(:disabled) { background: transparent; color: var(--tl-text); }
+    .nav-act.del:hover:not(:disabled) { color: var(--tl-danger); }
+    .nav-sep { height: 1px; background: var(--tl-border); margin: 6px 4px; }
+    .nav-new { margin-top: 6px; text-align: left; border-style: dashed; color: var(--tl-muted); }
+    .nav-fav-icon { color: var(--tl-star); }
+    .folder-nav.dimmed { opacity: .5; }
+    .star-btn {
+      padding: 0 4px;
+      border: 0;
+      background: transparent;
+      font-size: 17px;
+      line-height: 1;
+      color: var(--tl-subtle);
+    }
+    .star-btn:hover:not(:disabled) { background: transparent; color: var(--tl-star); }
+    .star-btn[aria-pressed="true"] { color: var(--tl-star); }
+    .row > div.folder-field { flex: 0 1 220px; }
+    @media (max-width: 900px) {
+      body.has-nav .workspace { display: block; }
+      .folder-nav { position: static; flex-direction: row; flex-wrap: wrap; max-height: none; margin-bottom: 12px; }
+      .nav-sep { display: none; }
+      .nav-new { margin-top: 0; }
+      .nav-item { flex: none; }
+      .nav-act { display: none; }
+      .nav-row.active .nav-act { display: inline-block; opacity: 1; }
+    }
+    /* Phone widths. manifest.json declares gecko_android 142+, so this page
+       really does open at ~360px — and until this block existed nothing below
+       900px adapted. Every rule here answers a measured defect at 360/390/412. */
+    @media (max-width: 560px) {
+      /* The card header's shrinkable items (name, chips) collapsed to 0-19px
+         while this badge held its intrinsic 91px, so the template NAME — the
+         row's whole point — became a single letter. The badge is a desktop
+         keyboard shortcut; on a touch device it was costing the most and
+         saying the least. The hints panel still spells the shortcuts out. */
+      kbd.slot { display: none; }
+      /* Hiding the badge alone only moved the name from 0px to ~40px: seven
+         controls plus a name simply do not fit on a 360px row, so the name
+         kept losing the shrink fight. Give it a line of its own instead —
+         "one scannable row" is a desktop intent, and on a phone the row that
+         cannot show which template it is has stopped being scannable.
+         Row 1: the controls, #N and Export. Row 2: the name, then the chips. */
+      .template-header { flex-wrap: wrap; row-gap: 6px; }
+      .template-header > * { order: 1; }
+      /* 0 1 auto, NOT 1 1 70%: with flex-grow the name filled its whole line
+         and pushed the chips onto a third one for every card, costing ~26px
+         of height each. Sized to its content it shares row 2 with the chips
+         whenever they fit, and only a genuinely long name takes the row to
+         itself — the extra height is then paying for something. */
+      .template-name-inline { order: 2; flex: 0 1 auto; min-width: 0; }
+      .tpl-chips { order: 3; }
+
+      /* Left-anchored menus (min-width: 220px) ran off the right edge — 51px
+         at 360px for the Import/Export menu. Anchor them to their button's
+         right edge instead and never let one exceed the viewport. */
+      .var-list, .dd-list { left: auto; right: 0; min-width: 0; max-width: calc(100vw - 24px); }
+      .rt-popover { min-width: 0; max-width: calc(100vw - 32px); }
+
+      /* Touch targets. WCAG 2.2 AA (2.5.8) asks for 24x24 CSS px; these sat at
+         13x13 (checkbox) to 23x17 (star). Scoped to this breakpoint so the
+         compact desktop density is untouched. */
+      .drag-handle, .expander, .star-btn, .nav-act {
+        min-width: 24px; min-height: 24px;
+        display: inline-flex; align-items: center; justify-content: center;
+      }
+      /* flex: none is load-bearing. The header is a flex row, so without it
+         the checkbox's automatic minimum size let it shrink back to the UA's
+         13px on the main axis while height honoured the 18px — measured
+         13x18, which is why the width looked like the rule was being ignored. */
+      .template-header input[type="checkbox"] { flex: none; width: 18px; height: 18px; }
+    }
+    /* Dark theme: colours come from the tokens above; only what is not
+       token-driven is overridden here. */
+    :root[data-theme="dark"] ::highlight(tl-ph-0) { background-color: #1e3a5f; color: #93c5fd; }
+    :root[data-theme="dark"] ::highlight(tl-ph-1) { background-color: #173d2a; color: #86efac; }
+    :root[data-theme="dark"] ::highlight(tl-ph-2) { background-color: #33285c; color: #c4b5fd; }
+    :root[data-theme="dark"] ::highlight(tl-ph-3) { background-color: #4a1f37; color: #f9a8d4; }
+    :root[data-theme="dark"] ::highlight(tl-ph-4) { background-color: #4c1d1d; color: #fca5a5; }
+    :root[data-theme="dark"] ::highlight(tl-ph-5) { background-color: #4a2a14; color: #fdba74; }
+    :root[data-theme="dark"] ::highlight(tl-ph-6) { background-color: #123e4a; color: #67e8f9; }
+    :root[data-theme="dark"] ::highlight(tl-ph-7) { background-color: #3f3a12; color: #fde047; }
+    :root[data-theme="dark"] ::highlight(tl-ph-ctl) { background-color: #fbbf24; color: #1a1408; }
+    :root[data-theme="dark"] ::highlight(tl-ph-dyn) { background-color: #1f2937; color: #cbd5e1; }
+
+    /* Honour the OS "reduce motion" setting: the transitions here are short,
+       but the smooth scrolls in options.js are not, and a vestibular trigger
+       is not a matter of duration. Kept as the last rule in the sheet so it
+       wins without needing a selector arms race. */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 1ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>
+    <img src="icons/icon128.png" alt="" />
+    <span id="title"></span>
+    <span id="title-version" class="title-version"></span>
+  </h1>
+  <div class="subtitle" id="subtitle"></div>
+
+  <div class="hint" id="hints">
+    <button type="button" class="hint-close" id="hints-close">×</button>
+    <strong id="hints-title"></strong>
+    <ul>
+      <li id="hint-placeholder"></li>
+      <li id="hint-shortcut"></li>
+      <li id="hint-slash"></li>
+      <li id="hint-if"></li>
+    </ul>
+  </div>
+
+  <div class="top-actions">
+    <button class="primary" id="add"></button>
+    <button id="new-folder-btn" hidden></button>
+    <span class="dd">
+      <button type="button" class="dd-btn" id="data-btn"></button>
+      <div class="dd-list" role="menu">
+        <button type="button" role="menuitem" id="export-all"></button>
+        <button type="button" role="menuitem" id="export-clip"></button>
+        <button type="button" role="menuitem" id="import-btn"></button>
+        <div class="dd-sep" role="separator"></div>
+        <button type="button" role="menuitem" id="backups-btn"></button>
+      </div>
+    </span>
+    <input type="file" id="import-file" accept=".json,application/json" hidden />
+    <span id="status" class="status"></span>
+    <span class="dd dd-right">
+      <button type="button" class="dd-btn" id="settings-btn"></button>
+      <div class="dd-list dd-form">
+        <label for="lang-select">Language / Dil</label>
+        <select id="lang-select">
+          <option value="auto">Auto</option>
+          <option value="en">English</option>
+          <option value="tr">Türkçe</option>
+        </select>
+        <label for="theme-select" id="theme-label"></label>
+        <select id="theme-select">
+          <option value="auto" id="theme-opt-auto"></option>
+          <option value="light" id="theme-opt-light"></option>
+          <option value="dark" id="theme-opt-dark"></option>
+        </select>
+        <div class="dd-sep" role="separator"></div>
+        <button type="button" class="danger" id="forget-all"></button>
+      </div>
+    </span>
+  </div>
+
+  <div class="top-actions">
+    <input type="search" id="search" class="search-box" autocomplete="off" />
+    <span class="var-menu">
+      <button id="var-btn" type="button"></button>
+      <div class="var-list" id="var-list"></div>
+    </span>
+    <button type="button" id="toggle-all"></button>
+  </div>
+
+  <div class="panel" id="backups-panel">
+    <h3 id="backups-title"></h3>
+    <div id="backups-list"></div>
+  </div>
+
+  <div class="selection-bar" id="selection-bar">
+    <span id="selection-count"></span>
+    <button class="small primary" id="export-selected"></button>
+    <button class="small" id="deselect-all"></button>
+  </div>
+
+  <div class="workspace">
+    <nav id="folder-nav" class="folder-nav" hidden></nav>
+    <div id="templates"></div>
+  </div>
+
+  <footer>
+    <div>
+      <span id="footer-made-by"></span>
+      <a href="https://kaktusdev.net" target="_blank" rel="noopener noreferrer">kaktusdev.net</a>
+      <span id="footer-version" class="version"></span>
+    </div>
+    <div>
+      <a class="gh" href="https://github.com/yfthcn" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        <span id="footer-github"></span>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Import Modal -->
+  <div class="modal-backdrop" id="import-modal">
+    <div class="modal" role="dialog" aria-labelledby="import-modal-title">
+      <h3 id="import-modal-title"></h3>
+      <div class="modal-preview" id="import-preview"></div>
+      <div class="source-note" id="import-source"></div>
+      <div class="radio-group">
+        <label>
+          <input type="radio" name="import-mode" value="merge" checked />
+          <span id="import-merge-label"></span>
+        </label>
+        <label>
+          <input type="radio" name="import-mode" value="replace" />
+          <span id="import-replace-label"></span>
+        </label>
+      </div>
+      <div class="conflict-note" id="conflict-note">
+        <div id="conflict-text" style="margin-bottom:8px;"></div>
+        <div class="radio-group">
+          <label><input type="radio" name="conflict-mode" value="keepboth" checked /> <span id="conflict-keepboth"></span></label>
+          <label><input type="radio" name="conflict-mode" value="overwrite" /> <span id="conflict-overwrite"></span></label>
+          <label><input type="radio" name="conflict-mode" value="skip" /> <span id="conflict-skip"></span></label>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button id="import-cancel"></button>
+        <button class="primary" id="import-confirm"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Generic dialog (alert / confirm / prompt replacement) -->
+  <div class="modal-backdrop" id="dlg">
+    <div class="modal" role="alertdialog" aria-labelledby="dlg-title" aria-describedby="dlg-msg">
+      <h3 id="dlg-title"></h3>
+      <div id="dlg-msg" style="white-space:pre-line"></div>
+      <input type="text" id="dlg-input" class="dlg-input" autocomplete="off" hidden />
+      <div class="modal-actions">
+        <button id="dlg-cancel"></button>
+        <button id="dlg-ok" class="primary"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="common.js"></script>
+  <script src="common-ui.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "yazit",
+  "version": "2.7.0",
+  "private": true,
+  "description": "Write once. Use anywhere. — cross-browser template paster. Dev-tooling manifest only; the extension itself ships zero runtime dependencies.",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://github.com/yfthcn/yazit",
+  "scripts": {
+    "test": "node --test",
+    "typecheck": "tsc -p jsconfig.json",
+    "lint:ext": "python3 build.py --unpacked && web-ext lint --source-dir dist/firefox-unpacked",
+    "check": "npm run typecheck && npm test && npm run lint:ext",
+    "build": "python3 build.py"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.3.0",
+    "@types/node": "^26.6.2",
+    "parse5": "^8.0.1",
+    "typescript": "^7.0.2",
+    "web-ext": "^10.6.0"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}
