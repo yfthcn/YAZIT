@@ -94,7 +94,7 @@ Requires Chrome / Edge **105+**.
 ### Firefox
 
 **From AMO:** install from
-[addons.mozilla.org](https://addons.mozilla.org/firefox/addon/typeless/).
+[addons.mozilla.org](https://addons.mozilla.org/firefox/addon/yazit/).
 
 **Temporary install (for testing):**
 
@@ -385,7 +385,7 @@ Korece giriş yöntemlerinin önüne geçmez.
 
 **Firefox** (140+, Android'de 142+)
 
-[addons.mozilla.org](https://addons.mozilla.org/firefox/addon/typeless/) üzerinden
+[addons.mozilla.org](https://addons.mozilla.org/firefox/addon/yazit/) üzerinden
 kur. Geçici kurulum için: `yazit-firefox.zip` indir ve çıkar,
 `about:debugging#/runtime/this-firefox` adresinde **Geçici Eklenti Yükle** → `manifest.json`.
 Geçici eklentiler Firefox yeniden başlayınca kaldırılır.
